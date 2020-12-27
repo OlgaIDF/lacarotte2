@@ -1,0 +1,263 @@
+:root {
+  font-size: calc(0.6em + 1vw);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  padding-top: 2.5rem;
+}
+
+header {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+}
+
+.nav-item {
+  letter-spacing: 0.07rem;
+  text-transform: uppercase;
+  padding: 5px;
+  font-size: 0.7rem;
+}
+.nav-profile{
+  font-size: 0.6rem;
+  color: #f9ab00;
+}
+
+#menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover, .profile-link:hover {
+  border-bottom: solid 2px #f9ab00;
+  color: #66921b;
+}
+
+.navbar-light .navbar-nav .nav-item .nav-link, .profile-link {
+  color: #f9ab00;
+  font-weight: 500;
+  padding: 3px 10px;
+}
+
+.navbar {
+  background: #233d4d;
+  padding: 0rem;
+}
+
+.banner {
+  position: relative;
+  min-height: 100vh;
+  background: url(../img/carotte-banner1.jpg);
+  background-size: cover;
+  padding: 7em 3em 0;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  color: #f9aa00;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.la {
+  color: #66921b;
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif !important;
+  color: #233d4d;
+  font-weight: 600;
+  padding-bottom: 2rem;
+}
+
+#resto {
+  color: #233d4d;
+  text-align: center;
+}
+
+.horaires {
+  border-bottom: 2px solid #f9aa00;
+  border-top: 2px solid #f9aa00;
+  color: #66921b;
+  font-size: 0.9rem;
+}
+
+.open {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.banner p {
+  font-size: 0.7rem;
+  text-align: justify;
+  line-height: 1.5em;
+  color: #262626;
+  margin: 1.2em 0 0;
+}
+
+#bannerText {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+#bannerText img {
+  width: 400px;
+}
+
+.btnD1 {
+  margin: 2.5em;
+  cursor: pointer;
+  color: #233d4d;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.btnD1:hover {
+  text-decoration: none;
+  color: #66921b;
+}
+
+.section1, .section2, .section3, .section4, .section5 {
+  padding-top: 4rem;
+  background: url(../img/pattern.png);
+  background-size: cover;
+  position: relative;
+  background-attachment: fixed;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.sectionText, .section5 {
+  font-size: 0.7rem;
+}
+
+.tab-content, .actus-excerpt {
+  background-color: #fff;
+}
+
+.imgBox {
+  display: inline-block;
+}
+
+#histoire-tab.nav-link.active, #concept-tab.nav-link.active, #equipe-tab.nav-link.active, #bols-tab.nav-link.active, #dessert-tab.nav-link.active, #boissons-tab.nav-link.active {
+  color: #66921b;
+  font-weight: 700;
+}
+
+#histoire-tab.nav-link, #concept-tab.nav-link, #equipe-tab.nav-link, #bols-tab.nav-link, #dessert-tab.nav-link, #boissons-tab.nav-link {
+  color: #a9c45e;
+}
+
+.nav-tabs {
+  border-bottom: solid 2px #f9ab00;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border-color: #f9ab00 #f9ab00 #fff;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+  border-color: #f9ab00 #f9ab00 #fff;
+}
+
+.card {
+  display: inline-block;
+  align-items: center;
+  width: 15rem;
+  height: 6rem;
+}
+
+.card-body {
+  padding: 1rem;
+  background: white;
+}
+
+.card-prix {
+  margin-bottom: 0;
+  color: #f9ab00;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card-title {
+  text-transform: uppercase;
+  text-align: justify;
+}
+
+.card-text {
+  font-size: 0.7rem;
+}
+
+.actus {
+  font-size: 0.7rem;
+  background-color: #fff;
+}
+
+.post {
+  display: flex;
+  align-items: center;
+}
+
+.actus-img {
+  width: 12rem;
+  display: block;
+  margin: 0 auto;
+}
+
+.actus-data {
+  text-transform: uppercase;
+  font-size: 0.5rem;
+}
+
+h5, h6 {
+  color: #66921b;
+}
+
+.coordonnes {
+  font-size: 0.7rem;
+}
+
+.coordonnes p {
+  margin: 0.2rem;
+}
+
+label, .form-control, #form-submit {
+  font-size: 0.7rem !important;
+}
+
+footer {
+  background: #233d4d;
+  color: #f9ab00;
+  font-size: smaller;
+  padding: 2rem;
+}
+
+footer a, footer a:hover {
+  color: #f9ab00;
+}
+
+#form-submit, #contact_envoyer, #reset_pass_envoyer {
+  background: #f9ab00;
+  color: #233d4d;
+  letter-spacing: 0.1rem;
+}
+
+.map {
+  position: relative;
+  padding: 0 0 56.25% 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.map iframe {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 100%;
+  height: 100%;
+}
+
+.form-check-label {
+  margin-left: 0.5rem;
+}

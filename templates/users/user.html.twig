@@ -1,0 +1,74 @@
+{% extends 'baseUsers.html.twig' %}
+
+{% block title %}accueil{% endblock %}
+
+
+{% block body %}
+
+
+{{ parent() }}
+
+   
+   
+<div class="col-10 p-5">
+
+    <h2 class="py-3">Profile de {{app.user.lastName}} {{app.user.firstName}}</h2>
+    <div class="container-fluid profile">
+        <div class="row ">
+            <div class="col-3">
+                Nom:
+            </div>
+            <div class="col-9">
+                {{app.user.lastName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                Prenom:
+            </div>
+            <div class="col-9">
+                {{app.user.firstName}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                Email:
+            </div>
+            <div class="col-9">
+                {{app.user.email}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                Telephone:
+            </div>
+            <div class="col-9">
+                {{app.user.phone}}
+            </div>
+        </div>
+
+        
+
+
+        <div class="row pt-3">
+            <div class="col-8">
+                
+            </div>
+        </div>
+       <div class="row pt-3">
+            <div class="col-8">
+                <div><a href="{{ path('users_pass_modifier')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn" >Modifier le mot de passe</a></div>
+               <div> <a href="{{ path('users_profil_modifier') }}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Modifier le profile</a></div>
+               <div><a href="{{ path('users_profile_delete', {'id':app.user.id})}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn" >Supprimer le profile</a></div>
+            </div>
+        </div>     
+        </div>
+
+
+
+    </div>
+
+
+
+
+{% endblock %}
