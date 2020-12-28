@@ -47,7 +47,7 @@ h2 {
  #form-submit, .btn-outline-dark, .profile_btn{
   background: #f9ab00;
   color: #233d4d;
-  letter-spacing: 0.1rem;
+  font-size: 0.6rem;
   
 }
 .profile_btn{

@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.copyright: 'Copyright &copy; 2020 | La carotte '
+    dossier_photos_menu: '%kernel.project_dir%/public/img/menu'
+    dossier_photos_actus: '%kernel.project_dir%/public/img/actus'
 
 services:
     # default configuration for services in *this* file

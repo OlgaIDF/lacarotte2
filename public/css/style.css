@@ -20,8 +20,8 @@ header {
   font-size: 0.7rem;
 }
 .nav-profile{
-  font-size: 0.6rem;
-  color: #f9ab00;
+  font-size: 0.7rem;
+  color: white;
 }
 
 #menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover, .profile-link:hover {
@@ -64,6 +64,13 @@ h2 {
   color: #233d4d;
   font-weight: 600;
   padding-bottom: 2rem;
+}
+h3{
+  font-family: "Open Sans", sans-serif !important;
+  color: #66921b;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 #resto {
@@ -139,13 +146,12 @@ h2 {
 .imgBox {
   display: inline-block;
 }
-
-#histoire-tab.nav-link.active, #concept-tab.nav-link.active, #equipe-tab.nav-link.active, #bols-tab.nav-link.active, #dessert-tab.nav-link.active, #boissons-tab.nav-link.active {
+#histoire-tab.nav-link.active, #concept-tab.nav-link.active, #equipe-tab.nav-link.active {
   color: #66921b;
   font-weight: 700;
 }
 
-#histoire-tab.nav-link, #concept-tab.nav-link, #equipe-tab.nav-link, #bols-tab.nav-link, #dessert-tab.nav-link, #boissons-tab.nav-link {
+#histoire-tab.nav-link, #concept-tab.nav-link, #equipe-tab.nav-link {
   color: #a9c45e;
 }
 
@@ -161,11 +167,14 @@ h2 {
   border-color: #f9ab00 #f9ab00 #fff;
 }
 
+
+
+
 .card {
   display: inline-block;
   align-items: center;
-  width: 15rem;
-  height: 6rem;
+  width: 12rem;
+  
 }
 
 .card-body {
@@ -176,17 +185,18 @@ h2 {
 .card-prix {
   margin-bottom: 0;
   color: #f9ab00;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
 .card-title {
   text-transform: uppercase;
   text-align: justify;
+  font-size: 0.7rem;
 }
 
 .card-text {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
 }
 
 .actus {
@@ -237,10 +247,10 @@ footer a, footer a:hover {
   color: #f9ab00;
 }
 
-#form-submit, #contact_envoyer, #reset_pass_envoyer {
+#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier {
   background: #f9ab00;
   color: #233d4d;
-  letter-spacing: 0.1rem;
+font-size: 0.6rem;
 }
 
 .map {
