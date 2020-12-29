@@ -217,7 +217,7 @@
         </div>
       </div>
     </div>
-    <div class="row mx-5">
+    <div class="row ">
       <div class="post">
         <div class="row no-gutters">
           {% for actu in actus %}
@@ -271,16 +271,18 @@
               {% endif %} <!-- print title-->
              
             <!-- Notre carte-->
-              <div class="col-xl-4 col-lg-6 p-2">
+              <div class="col-xl-3 col-md-4 col-sm-6">
                 <div class="card m-2">
-                  <img src="{{ asset('img/menu/' ~ menu.img) }}" class="card-img-top" alt="..." />
+                  <img src="{{ asset('img/menu/' ~ menu.img) }}" class="card-img-top" alt="{{ menu.name }}" />
                   <div class="card-body">
                     <h6 class="card-title">{{ menu.name }}</h6>
                     <p class="card-text text-muted text-left">
                       {{ menu.ingredients }}
                     </p>
                     <p class="card-prix text-right">{{ menu.price }} €</p>
-                    <a href="#" class="btn btn-sm text-center mt-2 " id="btn_panier">Ajouter au panier</a>
+                    <a href="{{ path('cart_add', {'id': menu.id}) }}"class="btn btn-sm text-center mt-2 " id="btn_panier"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
+                      <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                    </svg> Ajouter</a>
                   </div>
                 </div>
               </div>

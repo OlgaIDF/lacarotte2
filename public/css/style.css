@@ -5,6 +5,7 @@
 body {
   font-family: "Roboto", sans-serif;
   padding-top: 2.5rem;
+  
 }
 
 header {
@@ -210,7 +211,7 @@ h3{
 }
 
 .actus-img {
-  width: 12rem;
+  width: 11rem;
   display: block;
   margin: 0 auto;
 }
@@ -270,4 +271,15 @@ font-size: 0.6rem;
 
 .form-check-label {
   margin-left: 0.5rem;
+}
+.table td{
+  font-size: 0.6rem !important;
+}
+#img-panier{
+  width: 6rem;
+}
+.continuer a{
+  font-size: 0.8rem;
+  color: #233d4d;
+  
 }
