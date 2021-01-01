@@ -21,8 +21,9 @@ header {
   font-size: 0.7rem;
 }
 .nav-profile{
-  font-size: 0.7rem;
-  color: white;
+  font-size: 0.5rem;
+  color: #f9ab00;
+  text-transform: uppercase;
 }
 
 #menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover, .profile-link:hover {
@@ -248,7 +249,7 @@ footer a, footer a:hover {
   color: #f9ab00;
 }
 
-#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier {
+#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier, #btn_commande {
   background: #f9ab00;
   color: #233d4d;
 font-size: 0.6rem;
@@ -274,6 +275,10 @@ font-size: 0.6rem;
 }
 .table td{
   font-size: 0.6rem !important;
+}
+.table th{
+  font-size: 0.6rem !important;
+  font-weight: 600;
 }
 #img-panier{
   width: 6rem;
