@@ -56,7 +56,7 @@ class OrderController extends AbstractController
 
       {
         $cart = $session->get('cart', []);
-       // $manager = $this->getDoctrine()->getManager();
+       $manager = $this->getDoctrine()->getManager();
        
     
             $order = new Orders();
@@ -66,20 +66,20 @@ class OrderController extends AbstractController
           foreach ($cart as $id => $quantity) {
     
             $orderDetails = new OrderDetails;
-    
+          
             $orderDetails->setOrders($order);
             $orderDetails->setItemMenu($itemMenuRepository->find($id));
             $orderDetails->setQuantity($quantity);
-            
-            // $manager->persist($orderDetails);
-            // $manager->flush();
+            dd($orderDetails);
+             $manager->persist($orderDetails);
+             $manager->flush();
     
             $order->getOrderDetails()->add($orderDetails);
             
           }
-          dd($order);
-        //  $manager->persist($order);
-        //   $manager->flush();
+         // dd($order);
+        $manager->persist($order);
+         $manager->flush();
           return $this->redirectToRoute("home");
            
         }

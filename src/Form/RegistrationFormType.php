@@ -67,10 +67,10 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez accepter nos conditions générales et la politique de confidentialité',
+                        'message' => 'Vous devez accepter notre politique de confidentialité',
                     ]),
                 ],
-                'label' => "J'accepte les conditions générales et la politique de confidentialité"
+                'label' => "J'accepte la politique de confidentialité "
             ])
 
 
