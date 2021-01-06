@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} -validation du panier
+{% block title %} -commande
 {% endblock %}
 
 {% block body %}
@@ -9,91 +9,82 @@
 </div>
 <div class="row">
     <div class="col-10 offset-1 text-center pt-5">
-        <h2>Validation du panier</h2>
-        <p class="btn btn-warning btn-sm"> A emporter uniquement</p>
-        
+        <h2>Commande</h2>
+
     </div>
 </div>
-<div class="row">
-    <div class="col-3 offset-1 mb-5">
-        <h5 class="my-3 text-center">Vos détails du contact</h5>
-
-       
-        <form method="post">
-            <div class="form-field">
-                <label for="pass">Nom</label>
-                <input type="text" id="lastName" name="lastName" class="form-control" value="{{app.user.lastName}}">
-            </div>
-            <div class="form-field">
-                <label for="pass2">Prénom</label>
-                <input type="text" id="firstName" name="firstName" class="form-control" value="{{app.user.firstName}}">
-            </div>
-            <div class="form-field">
-                <label for="pass2">Téléphone</label>
-                <input type="text" id="phone" name="phone" class="form-control" value="{{app.user.phone}}">
-            </div>
-    
-    </div>
-
-{% if items | length > 0 %}
-
-<div class="col-7 offset-1 ">
-    <h5 class="my-3 text-center">Votre commande</h5>
-    <table class="table">
-        <thead class="text-center">
-            <tr>
-                <th>N</th>
-
-                <th>Photo</th>
-                <th>Menu</th>
-                <th>Composants</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-
-            <tr>
-                <td>{{ loop.index }}.</td>
-
-                <td><img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier"
-                        alt="{{ item.menu.name }}"></td>
-                <td>{{ item.menu.name }}</td>
-                <td>{{ item.menu.ingredients }}</td>
-                <td>{{ item.menu.price }}&euro;</td>
-                <td class="text-center">{{ item.quantity }}</td>
-                <td> {{ item.menu.price * item.quantity }}&euro;</td>
-                
-            </tr>
-
-            {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="6" class="text-right"><strong>Total : </strong></td>
-                <td>{{ total }}&euro;</td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-</div>
-
 <div class="row">
     <div class="col-5 offset-1 mb-5 continuer">
         <a href="{{ path('cart_index') }}" class=" text-dark "><i class="fa fa-arrow-left" aria-hidden="true"></i>
             Retourner au panier</a>
     </div>
-    <div class="col-5 mb-5">
-        <button type="submit" class="btn btn-lg text-center float-right" id="btn_commande">Valider <i
-                class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </div>
+<div class="row">
+    <div class="col-3 offset-1 mb-2 commande_details">
+        <h5 class="text-center">Livraison</h5>
+        
+
+        {% set formHtml %}
+        {{form_start(form, {action:path('order_recap')})}}
+        {{form_label(form.customer, "Choisir l'adresse de livraison")}}
+
+        {{form_end(form)}}
+        {% endset %}
+<a href="{{path('add_destinataire')}}"> Ajouter un destinataire </a>
+        {{formHtml|replace({'[br]': '</br>'})|raw}}
+
+
+    </div>
+
+    {% if items | length > 0 %}
+
+    <div class="col-7 offset-1">
+        <h5 class="mb-3 text-center">Détails de la commande</h5>
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th>N</th>
+
+                    
+                    <th>Menu</th>
+                  
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                   
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+
+                <tr>
+                    <td>{{ loop.index }}.</td>
+
+                    
+                    <td>{{ item.menu.name }}</td>
+                    
+                    <td>{{ item.menu.price }}&euro;</td>
+                    <td class="text-center">{{ item.quantity }}</td>
+                    <td> {{ item.menu.price * item.quantity }}&euro;</td>
+
+                </tr>
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-right"><strong>Total : </strong></td>
+                    <td>{{ total }}&euro;</td>
+                    
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>
 
-</form>
+
+
+
 
 
 

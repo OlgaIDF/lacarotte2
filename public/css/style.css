@@ -225,6 +225,10 @@ h3{
 h5, h6 {
   color: #66921b;
 }
+h5{
+  font-size: 1rem;
+  font-weight: 600;
+}
 
 .coordonnes {
   font-size: 0.7rem;
@@ -249,7 +253,7 @@ footer a, footer a:hover {
   color: #f9ab00;
 }
 
-#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier, #btn_commande {
+#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier, #orders_submit, #checkout-button {
   background: #f9ab00;
   color: #233d4d;
 font-size: 0.6rem;
@@ -273,18 +277,22 @@ font-size: 0.6rem;
 .form-check-label {
   margin-left: 0.5rem;
 }
-.table td{
+.table td,.form-check label,.order_recap{
   font-size: 0.6rem !important;
 }
-.table th{
+.table th, .col-form-label {
   font-size: 0.6rem !important;
   font-weight: 600;
 }
 #img-panier{
   width: 6rem;
 }
-.continuer a{
-  font-size: 0.8rem;
+.continuer a {
+  font-size: 0.8rem ;
   color: #233d4d;
   
+}
+.commande_details a
+{
+  font-size: 0.6rem !important;
 }

@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} -commande
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    {{ include('navbar.html.twig')}}
+</div>
+<div class="row">
+    <div class="col-10 offset-1 text-center pt-5">
+        <h2>Validation de commande</h2>
+
+    </div>
+</div>
+            <div class="row">
+                <div class="col-6 order_recap pl-5">
+
+                    <div>
+                        <h5 class="my-3">Coordonnées pour la livraison</h5>
+                        {{customer|title|raw}}
+                    </div>
+                    <div>
+                        <div class="col-10 offset-1 pt-5">
+                            <h5 class="mb-3">Livraison</h5>
+                    
+                        </div>
+                        <p>{{delivery.companyName}}</p>
+                       
+                        <p>{{ delivery.price }} €</p>
+                    </div>
+                </div>
+                
+                <div class="text-center col-md-6 p-3 order_recap ">
+                    <h5 class="my-3">Order details</h5>
+                    <hr>
+                    {% for item in items %}
+                        <div class="d-flex justify-content-between align-items-center p-3 m-2">
+                                    <div class="row align-items-center">
+                                        <img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier" alt="{{ item.menu.name }}">
+                                        <p class="ml-2">
+                                            {{item.menu.name}} ({{item.menu.price }}€)
+                                        </p>
+                                    </div>
+                                    <div class="">
+
+                                        <p class="align-items-end">
+                                            x {{item.quantity}} 
+                                        </p>
+                                        <p class="align-middle">{{(item.menu.price * item.quantity)}}€</p>
+                                    </div>    
+                        </div>  
+                        <hr>
+                        {% endfor %}
+                        <p>
+                            <b class="">Total des produits : {{ total }} €</b>
+                        </p>
+                        <p>
+                            <b>Livraison : {{ delivery.price }} €</b>
+                        </p>
+                        <p>
+                            <b class="bg-dark text-white py-2 px-5">Total : {{((total) + (delivery.price ))}} € </b>
+                        </p>
+                        <a href="{{ path('home') }}"id="checkout-button" class="btn btn-block">Payer {{((total) + (delivery.price ))}} € </a>
+                    </div>
+                </div>
+    {% endblock %}
+
+
+

@@ -34,10 +34,32 @@ class Orders
      */
     private $orderDetails;
 
-    public function __construct()
-    {
-        $this->orderDetails = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $State;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $delivery_name;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $delivery_price;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $reference;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $customer;
+
+   
 
     public function getId(): ?int
     {
@@ -97,4 +119,71 @@ class Orders
 
         return $this;
     }
+
+    public function getState(): ?int
+    {
+        return $this->State;
+    }
+
+    public function setState(int $State): self
+    {
+        $this->State = $State;
+
+        return $this;
+    }
+
+    public function getDeliveryName(): ?string
+    {
+        return $this->delivery_name;
+    }
+
+    public function setDeliveryName(string $delivery_name): self
+    {
+        $this->delivery_name = $delivery_name;
+
+        return $this;
+    }
+    public function __tostring()
+    {
+        return $this->getDeliveryName();
+    }
+
+    public function getDeliveryPrice(): ?float
+    {
+        return $this->delivery_price;
+    }
+
+    public function setDeliveryPrice(float $delivery_price): self
+    {
+        $this->delivery_price = $delivery_price;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    public function getCustomer(): ?string
+    {
+        return $this->customer;
+    }
+
+    public function setCustomer(string $customer): self
+    {
+        $this->customer = $customer;
+
+        return $this;
+    }
+
+    
+    
 }

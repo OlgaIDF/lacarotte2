@@ -1,0 +1,63 @@
+{% extends 'baseUsers.html.twig' %}
+
+{% block title %}Coordonnées pour la livraison{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+<div class="col-10 p-3">
+    <h2 class="py-3">Coordonnées pour la livraison</h2>
+
+    <div class="container mt-5">
+
+
+
+        {% for message in app.flashes('success') %}
+        <div class="flash-notice alert alert-success w-50">
+            {{ message }}
+        </div>
+        {% endfor %}
+        <hr>
+        {% if app.user.customers|length  < 1 %}
+        <p>Coordonnées pour la livraison non encore enregistrées</p>
+        {% else %}
+
+        <!-- // display addresses -->
+        {% for customer in customers %}
+        <div class="shadow row p-4 m-3">
+            <div class="col-md-8">
+
+
+                <h4>{{customer.firstName|title}} {{customer.lastName|title}} </h4>
+
+                <p>{{customer.address}} </p>
+                <p>{{customer.postalCode}}, {{customer.city}}</p>
+
+                <p>&#8470; téléphone: {{customer.phone}}</p>
+
+            </div>
+
+            <div class="actions col-md-4">
+                <a href="{{path('edit_destinataire', {'id' : customer.id})}}">
+                    <i class="fa fa-edit bg-warning p-2"></i>
+                </a>
+                <a href="{{path('delete_destinataire', {'id' : customer.id})}}">
+                    <i class="fa fa-trash bg-warning p-2"></i>
+                </a>
+            </div>
+        </div>
+         {% endfor %}
+        {% endif %}
+
+        <a href="{{path('add_destinataire')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Ajouter un destinataire </a>
+       
+
+    </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

@@ -26,10 +26,12 @@ class OrderDetails
      * @ORM\ManyToOne(targetEntity=ItemMenu::class, inversedBy="orderDetails")
      * @ORM\JoinColumn(nullable=false)
      */
+
+     
     private $itemMenu;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="orderDetails")
+     * @ORM\ManyToOne(targetEntity=Orders::class, inversedBy="orderDetails", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $orders;

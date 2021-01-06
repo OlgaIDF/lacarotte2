@@ -86,10 +86,15 @@ class UsersController extends AbstractController
 
         $this->addFlash(
             'success',
-            'Le votre profil a bien été supprimé'
+            'Votre profil a bien été supprimé'
         );
 
         return $this->redirectToRoute('home');
     }
+
+
+
+
+
 
 }
