@@ -37,9 +37,7 @@ class OrderController extends AbstractController
       $total += $totalItem;
     }
 
-    if (!$this->getUser()->getCustomers()->getValues()) {
-      return $this->redirectToRoute('add_destinataire');
-  }
+
   $form = $this->createForm(OrdersType::class, null, [
       'user' => $this->getUser()
   ]);
@@ -59,16 +57,14 @@ class OrderController extends AbstractController
 
     {
         
-    if (!$this->getUser()->getCustomers()->getValues()) {
-      return $this->redirectToRoute('add_destinataire');
-  }
+    
   $form = $this->createForm(OrdersType::class, null, [
       'user' => $this->getUser()
   ]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $delivery = $form->get('delivery')->getData();
+            
             $customer = $form->get('customer')->getData();
             $customer_content = $customer->getFirstName().' '.$customer->getLastName();
 
@@ -84,10 +80,9 @@ class OrderController extends AbstractController
             $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
-            $order->setDeliveryName($delivery->getCompanyName());
-            $order->setDeliveryPrice($delivery->getPrice());
+           
             $order->setCustomer($customer_content);
-            $order->setState(0);
+           
           
             // save products in orderdetails
             $cart = $session->get('cart', []);
@@ -123,14 +118,14 @@ class OrderController extends AbstractController
                 'form' => $form->createView(),
                 'items' => $cartWithData,
                 'total' => $total,
-                'delivery' => $delivery,
+                
                 'customer' =>$customer_content,
                 'reference' => $order->getReference()
             ]);
         }
         
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('home');
      
     }
 }

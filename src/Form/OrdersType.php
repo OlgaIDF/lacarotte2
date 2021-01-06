@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Orders;
 use App\Entity\Customer;
-use App\Entity\Delivery;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,13 +26,8 @@ class OrdersType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
-            ->add('delivery', EntityType::class, [
-                'class' => Delivery::class,
-                'label' => 'Choisir un transporteur',
-                'required' => true,
-                'multiple' => false,
-                'expanded' => true
-            ])
+           
+           
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',
                 'attr' => [

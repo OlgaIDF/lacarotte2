@@ -22,15 +22,18 @@ class OrdersAdminType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'yyyy-MM-dd',
             ))
-            ->add('State')
-            ->add('delivery_name')
-            ->add('delivery_price', MoneyType::class)
+
+           
             ->add('reference')
             ->add('customer')
             ->add('user', EntityType::class, array(
                 'class'=>User::class,
                 'choice_label'=>'last_name'
-            ));
+            ))
+           
+            
+            ;
+
             
     }
 

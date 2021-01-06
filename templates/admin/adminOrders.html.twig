@@ -1,18 +1,18 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}carte{% endblock %}
+{% block title %}commande{% endblock %}
 
 {% block body %}
 
     {{ parent() }}
 <div class="col-10 p-5">
-    <h2 class="py-3">Le transporteur</h2>
+    <h2 class="py-3">Les commandes</h2>
         <table class="table table-bordered table-hover table-sm">
             <thead>
                 <tr>
                     <th scope="col">Passée le</th>
                     <th scope="col">Par</th>
-                    <th scope="col">Prix</th>
+                    <th scope="col">Menu</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -21,7 +21,8 @@
                     <tr>
                         <td>{{  order.createdat|date("d M Y")  }}</td>
                         <td>{{order.user.lastName }} {{order.user.firstName }}</td>
-                        <td>{{ order.deliveryName }}</td>
+                        
+                        <td></td>
                         
                         
                         <td>
@@ -43,7 +44,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('order_create') }}" class="btn btn-outline-dark float-right">Ajouter</a>
+       
     </div>
 
 {% endblock %}

@@ -23,40 +23,7 @@ class AdminOrdersController extends AbstractController
             'orders' => $orders,
         ]);
     }
-    /**
-     * @Route("/admin/orders/create", name="order_create")
-     */
-    public function createOrder(Request $request)
-    {
-        $order= new Orders();
-
-        $form = $this->createForm(OrdersAdminType::class, $order);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-
-            if ($form->isValid()) {
-
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($order);
-                $manager->flush();
-                $this->addFlash(
-                    'success',
-                    "Le commande a bien été ajouté"
-                );
-            } else {
-                $this->addFlash(
-                    'danger',
-                    'Une erreur est survenue'
-                );
-            }
-            return $this->redirectToRoute('admin_orders');
-        }
-
-        return $this->render('admin/adminOrdersForm.html.twig', [
-            'formulaireOrder' => $form->createView()
-        ]);
-    }
+    
 
     /**
      * @Route("/admin/orders/update-{id}", name="order_update")
