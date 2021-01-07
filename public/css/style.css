@@ -287,7 +287,7 @@ font-size: 0.6rem;
 #img-panier{
   width: 6rem;
 }
-.continuer a {
+.continuer a  {
   font-size: 0.8rem ;
   color: #233d4d;
   
@@ -295,4 +295,9 @@ font-size: 0.6rem;
 .commande_details a
 {
   font-size: 0.6rem !important;
+}
+.formulaire{
+  font-size: 0.6rem ;
+  color: #233d4d;
+  text-decoration:underline ;
 }

@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="container-fluid">
- {{ include('navbar.html.twig')}}
+    {{ include('navbar.html.twig')}}
 </div>
 <div class="row">
     <div class="col-10 offset-1 text-center pt-5">
@@ -18,74 +18,82 @@
 {% if items | length > 0 %}
 
 <div class="row">
-<div class="col-5 offset-1 mb-3 continuer">
-    <a href="{{ path('home') }}#menus"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continuer mes achats</a>
-</div>
+    <div class="col-5 offset-1 mb-3 continuer">
+        <a href="{{ path('home') }}#menus"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continuer mes achats</a>
+    </div>
 </div>
 <div class="row">
     <div class="col-10 offset-1">
-    <table class="table">
-        <thead class="text-center">
-            <tr>
-                <th>N</th>
-                
-                <th>Photo</th>
-                <th>Menu</th>
-                <th>Composants</th>
-                <th>Prix</th>
-                <th>Quantité</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-           
+        <table class="table">
+            <thead class="text-center">
+                <tr>
+                    <th>N</th>
+
+                    <th>Photo</th>
+                    <th>Menu</th>
+                    <th>Composants</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+
                 <tr>
                     <td>{{ loop.index }}.</td>
-                   
-                    <td><img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier" alt="{{ item.menu.name }}"></td>
+
+                    <td><img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier"
+                            alt="{{ item.menu.name }}"></td>
                     <td>{{ item.menu.name }}</td>
                     <td>{{ item.menu.ingredients }}</td>
                     <td>{{ item.menu.price }}&euro;</td>
-                    <td class="text-center">{{ item.quantity }}</td>
+                    <td class="text-center">
+                        <a href="{{path('delete_one', {'id' : item.menu.id})}}"><i class="fa fa-minus p-1 mr-2 rounded-pill bg-warning text-dark"></i></a>
+                            {{item.quantity}}
+                            <a href="{{path('cart_add', {'id' : item.menu.id})}}"><i class="fa fa-plus  p-1 ml-2 rounded-pill bg-warning  text-dark"></i></a>
+                    </td>
                     <td> {{ item.menu.price * item.quantity }}&euro;</td>
-                     <td>
-                        <a href="{{ path('cart_delete', {'id': item.menu.id }) }}"><i class="fa fa-trash text-danger"></i></a>
+                    <td>
+                        <a href="{{ path('cart_delete', {'id': item.menu.id }) }}"><i
+                                class="fa fa-trash p-1 mr-2  text-dark"></i></a>
 
-                    </td> 
+                    </td>
                 </tr>
-             
-            {% endfor %}
-        </tbody>
-        <tfoot>
-         <tr>
-                <td colspan="6" class="text-right"><strong>Total : </strong></td>
-                <td>{{ total }}&euro;</td>
-                <td></td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-</div>  
-<div class="row">
-    
-    <div class="col-11 mb-5">
-        <a href="{{ path('order') }}" id="form-submit" class="btn btn-lg text-center float-right">Commander <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" class="text-right"><strong>Total : </strong></td>
+                    <td>{{ total }}&euro;</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
-</div>  
+</div>
+<div class="row">
+
+    <div class="col-11 mb-5">
+        <a href="{{ path('order') }}" id="form-submit" class="btn btn-lg text-center float-right">Commander <i
+                class="fa fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</div>
 {% else %}
 <div class="row">
     <div class="col-12 text-center">
-     <p>Votre panier est vide</p>   
+        <p>Votre panier est vide</p>
     </div>
 </div>
-    <div class="row">
+<div class="row">
     <div class="col-12 text-center mb-5">
-        <a href="{{ path('home') }}#menus" type="submit" id="form-submit" class="btn btn-lg text-center " >Commancer mes achats</a>
+        <a href="{{ path('home') }}#menus" type="submit" id="form-submit" class="btn btn-lg text-center ">Commancer mes
+            achats</a>
     </div>
 </div>
-    
+
 {% endif %}
 
 

@@ -10,20 +10,32 @@
         <table class="table table-bordered table-hover table-sm">
             <thead>
                 <tr>
+                    <th scope="col">Reference</th>
                     <th scope="col">Passée le</th>
                     <th scope="col">Par</th>
-                    <th scope="col">Menu</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for order in orders %}
                     <tr>
-                        <td>{{  order.createdat|date("d M Y")  }}</td>
+                        <td>{{order.reference}}</td>
+                        <td>{{  order.createdat|date('Y-m-d H:i:s')  }}</td>
                         <td>{{order.user.lastName }} {{order.user.firstName }}</td>
+                        <td>{{order.total}}</td>
                         
-                        <td></td>
-                        
+                       <td> 
+                            {% if order.state == 0 %}
+                            Non payée
+                            {% elseif order.state == 1 %}
+                            Payée
+                            {% elseif order.state == 2 %}
+                            Préparation en cours
+                            {% endif %}
+                       
+                        </td>
                         
                         <td>
                             <a href="{{ path('order_update', {'id':order.id}) }}">

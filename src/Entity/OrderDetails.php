@@ -36,6 +36,21 @@ class OrderDetails
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $menu;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $total;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -73,6 +88,40 @@ class OrderDetails
     public function setOrders(?Orders $orders): self
     {
         $this->orders = $orders;
+
+        return $this;
+    }
+    public function getMenu(): ?string
+    {
+        return $this->menu;
+    }
+
+    public function setMenu(string $menu): self
+    {
+        $this->menu = $menu;
+
+        return $this;
+    }
+    public function getTotal(): ?string
+    {
+        return $this->total;
+    }
+
+    public function setTotal(string $total): self
+    {
+        $this->total = $total;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

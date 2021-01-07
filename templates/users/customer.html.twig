@@ -5,10 +5,10 @@
 {% block body %}
 {{ parent() }}
 
-<div class="col-10 p-3">
-    <h2 class="py-3">Coordonnées pour la livraison</h2>
+<div class="col-10 p-3 shadow">
+    <h2 class="p-3 ml-5">Coordonnées pour la livraison</h2>
 
-    <div class="container mt-5">
+    <div class="container ">
 
 
 
@@ -24,12 +24,12 @@
 
         <!-- // display addresses -->
         {% for customer in customers %}
-        <div class="shadow row p-4 m-3">
+        <div class="row  mx-3">
             <div class="col-md-8">
 
-
-                <h4>{{customer.firstName|title}} {{customer.lastName|title}} </h4>
-
+ 
+                <h6>{{ loop.index }}. {{customer.firstName|title}} {{customer.lastName|title}} </h6>
+               
                 <p>{{customer.address}} </p>
                 <p>{{customer.postalCode}}, {{customer.city}}</p>
 
@@ -39,10 +39,10 @@
 
             <div class="actions col-md-4">
                 <a href="{{path('edit_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-edit bg-warning p-2"></i>
+                    <i class="fa fa-edit p-1 ml-2 btn btn-outline-warning text-dark"></i>
                 </a>
                 <a href="{{path('delete_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-trash bg-warning p-2"></i>
+                    <i class="fa fa-trash p-1 ml-2 text-dark btn btn-outline-warning text-dark"></i>
                 </a>
             </div>
         </div>

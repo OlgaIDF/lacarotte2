@@ -75,4 +75,21 @@ class CartController extends AbstractController
     return $this->redirectToRoute("cart_index");
   }
   
+/**
+     * @Route("/cart/deleteOne/{id}", name="delete_one")
+     */
+  public function deleteOne($id,  SessionInterface $session)
+  {
+      $cart = $session->get('cart', []);
+
+      if (($cart[$id]) > 1) {
+          $cart[$id]--;
+      }else{
+          // $cart[$id] = 0;
+          unset($cart[$id]);
+      }
+
+      $session->set('cart', $cart);
+      return $this->redirectToRoute("cart_index");
+  }
 }

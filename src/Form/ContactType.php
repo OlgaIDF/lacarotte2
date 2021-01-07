@@ -21,12 +21,7 @@ class ContactType extends AbstractType
             ->add('prenom', TextType::class)
                         ->add('email', EmailType::class)
            
-            ->add('message', TextareaType::class, [
-                'attr' => [
-                   'placeholder'=>"Comment pouvons-nous aider?" 
-                ]
-                
-            ])
+            ->add('message', TextareaType::class)
             
             ->add('RGPD', CheckboxType::class, [
                

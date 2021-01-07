@@ -176,48 +176,46 @@
         </div>
       </div>
     </div>
-    
-
-        {% for catID in category %}
-        {% set titleIsPrinted = false %} <!-- title not printed, resets at every new category step-->
-          {% for menu in item_menu %}
-            {% if menu.category.id == catID.id %}
-            
-              {% if titleIsPrinted == false %}
-              <div class="row text-center">
-                <div class="offset-sm-2 col-sm-8">
-                  <h3 class="m-3">{{ catID.name  }}</h3>
-                </div>
-                 </div>
-                <div class="row cards text-center">
-            
-              {% set titleIsPrinted = true %}
-              {% endif %} <!-- print title-->
-             
-            <!-- Notre carte-->
-              <div class="col-xl-3 col-md-4 col-sm-6">
-                <div class="card m-2">
-                  <img src="{{ asset('img/menu/' ~ menu.img) }}" class="card-img-top" alt="{{ menu.name }}" />
-                  <div class="card-body">
-                    <h6 class="card-title">{{ menu.name }}</h6>
-                    <p class="card-text text-muted text-left">
-                      {{ menu.ingredients }}
-                    </p>
-                    <p class="card-prix text-right">{{ menu.price }} €</p>
-                    <a href="{{ path('cart_add', {'id': menu.id}) }}"class="btn btn-sm text-center mt-2 " id="btn_panier">Ajouter <i class="fas fa-shopping-basket"></i></a>
-                  </div>
-                </div>
-              </div>
-            
-            {% endif %} <!-- if category.id == item_menu.category.id-->
-          {% endfor %} <!-- for item_menu-->
-          </div>
-        {% endfor %}   <!-- for category-->
-
+    {% for catID in category %}
+    {% set titleIsPrinted = false %}
+    <!-- title not printed, resets at every new category step-->
+    {% for menu in item_menu %}
+    {% if menu.category.id == catID.id %}
+    {% if titleIsPrinted == false %}
+    <div class="row text-center">
+      <div class="offset-sm-2 col-sm-8">
+        <h3 class="m-3">{{ catID.name  }}</h3>
       </div>
     </div>
+    <div class="row cards text-center">
+      {% set titleIsPrinted = true %}
+      {% endif %}
+      <!-- print title-->
+      <!-- Notre carte-->
+      <div class="col-xl-3 col-md-4 col-sm-6">
+        <div class="card m-2">
+          <img src="{{ asset('img/menu/' ~ menu.img) }}" class="card-img-top" alt="{{ menu.name }}" />
+          <div class="card-body">
+            <h6 class="card-title text-center">{{ menu.name }}</h6>
+            <p class="card-text text-muted text-left">
+              {{ menu.ingredients }}
+            </p>
+            <p class="card-prix text-right">{{ menu.price }} €</p>
+            <a href="{{ path('cart_add', {'id': menu.id}) }}" class="btn btn-sm text-center mt-2 "
+              id="btn_panier">Ajouter <i class="fas fa-shopping-basket"></i></a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <!-- if category.id == item_menu.category.id-->
+      {% endfor %}
+      <!-- for item_menu-->
+    </div>
+    {% endfor %}
+    <!-- for category-->
+  </div>
+  </div>
 </section>
-
 <!-- Contact-->
 <section class="section4 mb-5" id="contact">
   <div class="container-fluid">
@@ -231,22 +229,17 @@
     <div class="row mx-5">
       <!-- Formulaire-->
       <div class="form-group col-md-6 col-sm-12 sectionText formulaire">
-        <p>
-          Pour toute demande d’informations, complétez le formulaire ci-dessous:
-        </p>
         <!-- Flash -->
-        {% for label, messages in app.flashes(['success', 'danger']) %} {% for
+        {% for label, messages in app.flashes(['success', 'danger']) %} 
+        {% for
         message in messages %}
-        <div class="flash-{{ label }} p-3 fixed-top bg-{{
-            label
-          }} text-white text-center">
+        <div class="flash-{{ label }} p-3 fixed-top bg-{{ label }} text-white text-center">
           {{ message }}
         </div>
-
-        {% endfor %} {% endfor %}
+        {% endfor %} 
+        {% endfor %}
 
         {{ form_start(formulaireDeContact) }}
-
         {{ form_end(formulaireDeContact) }}
       </div>
       <!-- Coordonnes-->

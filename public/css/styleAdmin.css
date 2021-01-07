@@ -3,7 +3,7 @@
  }
  body {
    font-family: 'Roboto', sans-serif;
-   
+  height: 100%;
    font-size: 0.7rem;
  }
  header, footer{
@@ -33,6 +33,7 @@ h2 {
    margin-left: -1.5rem;
    text-decoration: none;
    list-style-type: none;
+   margin-bottom: 10rem !important;
  }
  .listadmin ul li a {
    color: #233d4d;
@@ -55,4 +56,14 @@ h2 {
 }
 .form-control{
   font-size: 0.7rem !important;
+}
+footer {
+ 
+
+  font-size: smaller;
+  padding: 2rem;
+}
+
+footer a, footer a:hover {
+  color: #f9ab00;
 }

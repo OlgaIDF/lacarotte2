@@ -78,15 +78,7 @@
 
 
 
-   <footer>
-
-      <div class="row text-center">
-         <div class="col-12 p-3">
-            {{ copyright|raw }}
-         </div>
-      </div>
-
-   </footer>
+   {{ include('footer.html.twig')}}
    {% block javascripts %}{% endblock %}
    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"></script>

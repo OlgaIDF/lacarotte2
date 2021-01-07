@@ -45,6 +45,11 @@ class Orders
      */
     private $customer;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $state;
+
    
 
     public function getId(): ?int
@@ -133,6 +138,25 @@ class Orders
         return $this;
     }
 
-    
+    public function getState(): ?int
+    {
+        return $this->state;
+    }
+
+    public function setState(int $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getTotal()
+    {
+        $total = 0;
+        foreach ($this->getOrderDetails()->getValues() as $menu) {
+            $total = $total + $menu->getPrice() * $menu->getQuantity();
+        }
+        return $total;
+    }
     
 }

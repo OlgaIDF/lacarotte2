@@ -80,9 +80,8 @@ class OrderController extends AbstractController
             $order->setReference($reference);
             $order->setUser($this->getUser());
             $order->setCreatedAt($date);
-           
+            $order->setState(0);
             $order->setCustomer($customer_content);
-           
           
             // save products in orderdetails
             $cart = $session->get('cart', []);
@@ -94,21 +93,21 @@ class OrderController extends AbstractController
       ];
     }
 
+    
+
     $total = 0;
     foreach ($cartWithData as $item) {
+      $orderDetails = new OrderDetails();
+      $orderDetails->setOrders($order);
+      $orderDetails->setMenu($item['menu']->getName());
+      $orderDetails->setQuantity($item['quantity']);
+      $orderDetails->setItemMenu($item['menu']);
+      $orderDetails->setPrice($item['menu']->getPrice());
+      $orderDetails->setTotal($item['menu']->getPrice() * $item['quantity']);
+      $manager->persist($orderDetails);
       $totalItem = $item['menu']->getPrice() * $item['quantity'];
       $total += $totalItem;
-    }
-
-    foreach ($cartWithData as $item) {
-                $orderDetails = new OrderDetails();
-                $orderDetails->setOrders($order);
-              
-                $orderDetails->setQuantity($item['quantity']);
-                $orderDetails->setItemMenu($item['menu']);
-                $manager->persist($orderDetails);
-
-                //dd($item);
+               //dd($item);
             }
             $manager->flush();
 
