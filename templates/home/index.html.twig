@@ -3,7 +3,7 @@
 <!-- Header -->
 <header id="accueil">
   <div class="container-fluid">
-    {{ include('navbar.html.twig')}}
+    {{ include("navbar.html.twig") }}
   </div>
   <!-- Header fin -->
 </header>
@@ -20,7 +20,7 @@
         <p>
           Notre restaurant propose une délicieuse sélection de bols froids et
           chauds, composés d’ingrédients frais, cuisinés chaque jour sur place
-          par notre brigade de chefs et toujours avec beaucoup d’amour..
+          par nos chefs et toujours avec beaucoup d’amour..
         </p>
         <a href="#menus" class="btnD1">Découvrez notre carte
           <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -29,11 +29,11 @@
   </div>
 </section>
 <!-- Qui somme nous? -->
-<section id="qui" class="section1">
+<section id="qui" class="section">
   <div class="container-fluid">
     <div class="row">
       <div class="offset-md-2 col-md-8">
-        <div class="headerText text-center">
+        <div class="titleText text-center">
           <h2>Qui sommes nous ?</h2>
         </div>
       </div>
@@ -58,40 +58,15 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active mt-3 text-justify" id="concept" role="tabpanel"
             aria-labelledby="concept-tab">
-            <p>
-              Le concept du bol, ce concept de restauration rapide est simple !
-              En effet, il suffit de réunir plusieurs ingrédients sains pour
-              créer un plat complet et équilibré. Nous retrouvons dans les bols
-              les aliments comme : les légumineuses, les légumes, les céréales,
-              les poissons, les graines, les fruits...
-            </p>
+            <div class="m-3">
+              <p> Le concept du bol, ce concept de restauration rapide est simple - il suffit de réunir plusieurs
+                ingrédients sains (les légumineuses, les légumes, les céréales, les poissons, les graines, les fruits)
+                pour créer un plat complet et équilibré </p>
 
-            <p>
-              Nous préférons utiliser les produits locaux et frais pour une
-              explosion de saveurs !
-            </p>
-            <p>
-              Les bols apportent tout ce dont le corps a besoin pour être en
-              bonne santé. En plus, ils se mangent sur le pouce ! Alors, c'est
-              un repas parfait pour les midis lorsque les clients n'ont pas le
-              temps de prendre le temps de déjeuner. Les bols concilient santé
-              et rapidité !
-            </p>
-
-            <p>
-              Les bols infiniment variables sont idéaux pour toutes les saisons
-              et tous les goûts. Par exemple, en hiver nous les préférons riches
-              et copieux, alors qu'en été nous les préférons légers et frais.
-            </p>
-          </div>
-          <div class="tab-pane fade mt-3 text-justify" id="histoire" role="tabpanel" aria-labelledby="histoire-tab">
-            Food truck fixie locavore, accusamus mcsweeney's marfa nulla
-            single-origin coffee squid. Exercitation +1 labore velit, blog
-            sartorial PBR leggings next level wes anderson artisan four loko
-            farm-to-table craft beer twee. Qui photo booth letterpress, commodo
-            enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum
-            PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-            mollit.
+              <p> Nous préférons utiliser les produits locaux et frais pour une
+                explosion de saveurs </p>
+              <p> Plus de 80% de nos emballages écoresponsables (en papier recyclé ou biodégradables) </p>
+            </div>
           </div>
           <div class="tab-pane fade mt-3 text-justify" id="equipe" role="tabpanel" aria-labelledby="equipe-tab">
             Etsy mixtape wayfarers, ethical wes anderson tofu before they sold
@@ -132,16 +107,16 @@
   </div>
 </section>
 <!-- Actus -->
-<section class="section2" id="actus">
-  <div class="container-fluid">
+<section class="section" id="actus">
+  <div class="container-fluid px-5">
     <div class="row">
       <div class="offset-sm-2 col-sm-8">
-        <div class="headerText text-center">
+        <div class="titleText text-center">
           <h2>Actus & événements</h2>
         </div>
       </div>
     </div>
-    <div class="row ">
+    <div class="row">
       <div class="post">
         <div class="row no-gutters">
           {% for actu in actus %}
@@ -167,29 +142,26 @@
   </div>
 </section>
 <!-- Notre carte-->
-<section class="section3" id="menus">
+<section class="section" id="menus">
   <div class="container-fluid">
     <div class="row">
       <div class="offset-sm-2 col-sm-8">
-        <div class="headerText text-center">
+        <div class="titleText text-center">
           <h2>Notre carte</h2>
         </div>
       </div>
     </div>
-    {% for catID in category %}
-    {% set titleIsPrinted = false %}
+    {% for catID in category %} {% set titleIsPrinted = false %}
     <!-- title not printed, resets at every new category step-->
-    {% for menu in item_menu %}
-    {% if menu.category.id == catID.id %}
-    {% if titleIsPrinted == false %}
+    {% for menu in item_menu %} {% if menu.category.id == catID.id %} {% if
+    titleIsPrinted == false %}
     <div class="row text-center">
       <div class="offset-sm-2 col-sm-8">
-        <h3 class="m-3">{{ catID.name  }}</h3>
+        <h3 class="m-3">{{ catID.name }}</h3>
       </div>
     </div>
     <div class="row cards text-center">
-      {% set titleIsPrinted = true %}
-      {% endif %}
+      {% set titleIsPrinted = true %} {% endif %}
       <!-- print title-->
       <!-- Notre carte-->
       <div class="col-xl-3 col-md-4 col-sm-6">
@@ -201,8 +173,8 @@
               {{ menu.ingredients }}
             </p>
             <p class="card-prix text-right">{{ menu.price }} €</p>
-            <a href="{{ path('cart_add', {'id': menu.id}) }}" class="btn btn-sm text-center mt-2 "
-              id="btn_panier">Ajouter <i class="fas fa-shopping-basket"></i></a>
+            <a href="{{ path('cart_add', { id: menu.id }) }}" class="btn btn-sm text-center mt-2 btn_panier">Ajouter <i
+                class="fas fa-shopping-basket"></i></a>
           </div>
         </div>
       </div>
@@ -214,14 +186,13 @@
     {% endfor %}
     <!-- for category-->
   </div>
-  </div>
 </section>
 <!-- Contact-->
-<section class="section4 mb-5" id="contact">
+<section class="section mb-5" id="contact">
   <div class="container-fluid">
     <div class="row">
       <div class="offset-sm-2 col-sm-8">
-        <div class="headerText text-center">
+        <div class="titleText text-center">
           <h2>Contact</h2>
         </div>
       </div>
@@ -230,14 +201,14 @@
       <!-- Formulaire-->
       <div class="form-group col-md-6 col-sm-12 sectionText formulaire">
         <!-- Flash -->
-        {% for label, messages in app.flashes(['success', 'danger']) %} 
-        {% for
+        {% for label, messages in app.flashes(['success', 'danger']) %} {% for
         message in messages %}
-        <div class="flash-{{ label }} p-3 fixed-top bg-{{ label }} text-white text-center">
+        <div class="flash-{{ label }} p-3 fixed-top bg-{{
+            label
+          }} text-white text-center">
           {{ message }}
         </div>
-        {% endfor %} 
-        {% endfor %}
+        {% endfor %} {% endfor %}
 
         {{ form_start(formulaireDeContact) }}
         {{ form_end(formulaireDeContact) }}

@@ -1,12 +1,12 @@
 {% extends 'baseUsers.html.twig' %}
 
-{% block title %}Coordonnées pour la livraison{% endblock %}
+{% block title %}Les coordonnées du destinataire{% endblock %}
 
 {% block body %}
 {{ parent() }}
 
 <div class="col-10 p-3 shadow">
-    <h2 class="p-3 ml-5">Coordonnées pour la livraison</h2>
+    <h2 class="p-3 ml-5">Les coordonnées du destinataire</h2>
 
     <div class="container ">
 
@@ -19,19 +19,16 @@
         {% endfor %}
         <hr>
         {% if app.user.customers|length  < 1 %}
-        <p>Coordonnées pour la livraison non encore enregistrées</p>
+        <p>Les coordonnées du destinataire non encore enregistrées</p>
         {% else %}
 
-        <!-- // display addresses -->
+        <!-- // display destinataire -->
         {% for customer in customers %}
         <div class="row  mx-3">
             <div class="col-md-8">
 
- 
+
                 <h6>{{ loop.index }}. {{customer.firstName|title}} {{customer.lastName|title}} </h6>
-               
-                <p>{{customer.address}} </p>
-                <p>{{customer.postalCode}}, {{customer.city}}</p>
 
                 <p>&#8470; téléphone: {{customer.phone}}</p>
 
@@ -46,11 +43,12 @@
                 </a>
             </div>
         </div>
-         {% endfor %}
+        {% endfor %}
         {% endif %}
 
-        <a href="{{path('add_destinataire')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Ajouter un destinataire </a>
-       
+        <a href="{{path('add_destinataire')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Ajouter
+            un destinataire </a>
+
 
     </div>
 

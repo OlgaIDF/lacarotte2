@@ -87,7 +87,7 @@ class AdminCategoryController extends AbstractController
                 "La catégorie a bien été modifié"
             );
 
-            return $this->redirectToRoute('admin_categories');
+            return $this->redirectToRoute('admin_category');
         }
         return $this->render('admin/adminCategoryForm.html.twig', [
             'formulaireCategory' => $form->createView()
@@ -115,6 +115,6 @@ class AdminCategoryController extends AbstractController
 
 
 
-        return $this->redirectToRoute('admin_categories');
+        return $this->redirectToRoute('admin_category');
     }
 }

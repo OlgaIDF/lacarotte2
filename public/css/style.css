@@ -5,7 +5,6 @@
 body {
   font-family: "Roboto", sans-serif;
   padding-top: 2.5rem;
-  
 }
 
 header {
@@ -20,18 +19,20 @@ header {
   padding: 5px;
   font-size: 0.7rem;
 }
-.nav-profile{
+.nav-profile {
   font-size: 0.5rem;
   color: #f9ab00;
   text-transform: uppercase;
 }
 
-#menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover, .profile-link:hover {
+#menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover,
+.profile-link:hover {
   border-bottom: solid 2px #f9ab00;
   color: #66921b;
 }
 
-.navbar-light .navbar-nav .nav-item .nav-link, .profile-link {
+.navbar-light .navbar-nav .nav-item .nav-link,
+.profile-link {
   color: #f9ab00;
   font-weight: 500;
   padding: 3px 10px;
@@ -67,7 +68,7 @@ h2 {
   font-weight: 600;
   padding-bottom: 2rem;
 }
-h3{
+h3 {
   font-family: "Open Sans", sans-serif !important;
   color: #66921b;
   text-transform: uppercase;
@@ -127,33 +128,41 @@ h3{
   color: #66921b;
 }
 
-.section1, .section2, .section3, .section4, .section5 {
+.section {
   padding-top: 4rem;
   background: url(../img/pattern.png);
   background-size: cover;
   position: relative;
   background-attachment: fixed;
-  min-height: 100%;
-  min-width: 100%;
+  min-height: 80vh;
+  min-width: 100vw;
 }
 
-.sectionText, .section5 {
+.sectionText,
+.section5 {
   font-size: 0.7rem;
 }
-
-.tab-content, .actus-excerpt {
+.titleTecte{
+  margin-bottom: 1rem;
+}
+.tab-content,
+.actus-excerpt {
   background-color: #fff;
 }
 
 .imgBox {
   display: inline-block;
 }
-#histoire-tab.nav-link.active, #concept-tab.nav-link.active, #equipe-tab.nav-link.active {
+#histoire-tab.nav-link.active,
+#concept-tab.nav-link.active,
+#equipe-tab.nav-link.active {
   color: #66921b;
   font-weight: 700;
 }
 
-#histoire-tab.nav-link, #concept-tab.nav-link, #equipe-tab.nav-link {
+#histoire-tab.nav-link,
+#concept-tab.nav-link,
+#equipe-tab.nav-link {
   color: #a9c45e;
 }
 
@@ -161,22 +170,20 @@ h3{
   border-bottom: solid 2px #f9ab00;
 }
 
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
   border-color: #f9ab00 #f9ab00 #fff;
 }
 
-.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
   border-color: #f9ab00 #f9ab00 #fff;
 }
-
-
-
 
 .card {
   display: inline-block;
   align-items: center;
   width: 12rem;
-  
 }
 
 .card-body {
@@ -222,10 +229,11 @@ h3{
   font-size: 0.5rem;
 }
 
-h5, h6 {
+h5,
+h6 {
   color: #66921b;
 }
-h5{
+h5 {
   font-size: 1rem;
   font-weight: 600;
 }
@@ -238,7 +246,9 @@ h5{
   margin: 0.2rem;
 }
 
-label, .form-control, #form-submit {
+label,
+.form-control,
+#form-submit {
   font-size: 0.7rem !important;
 }
 
@@ -247,16 +257,25 @@ footer {
   color: #f9ab00;
   font-size: smaller;
   padding: 2rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
-footer a, footer a:hover {
+footer a,
+footer a:hover {
   color: #f9ab00;
 }
 
-#form-submit, #contact_envoyer, #reset_pass_envoyer, #btn_panier, #orders_submit, #checkout-button {
+#form-submit,
+#contact_envoyer,
+#reset_pass_envoyer,
+#btn_panier,
+#orders_submit,
+#checkout-button,
+.btn_panier {
   background: #f9ab00;
   color: #233d4d;
-font-size: 0.6rem;
+  font-size: 0.6rem;
 }
 
 .map {
@@ -277,27 +296,38 @@ font-size: 0.6rem;
 .form-check-label {
   margin-left: 0.5rem;
 }
-.table td,.form-check label,.order_recap{
+.table td,
+.form-check label,
+.order_recap {
   font-size: 0.6rem !important;
+
 }
-.table th, .col-form-label {
+.table th,
+.col-form-label {
   font-size: 0.6rem !important;
   font-weight: 600;
-}
-#img-panier{
-  width: 6rem;
-}
-.continuer a  {
-  font-size: 0.8rem ;
-  color: #233d4d;
   
 }
-.commande_details a
-{
+.table, .order_details{
+  background-color: #fff;
+}
+#img-panier {
+  width: 6rem;
+}
+.continuer a {
+  font-size: 0.8rem;
+  color: #233d4d;
+}
+.commande_details a {
   font-size: 0.6rem !important;
 }
-.formulaire{
-  font-size: 0.6rem ;
+.formulaire {
+  font-size: 0.6rem;
   color: #233d4d;
-  text-decoration:underline ;
+  text-decoration: underline;
+}
+.priceMinus,
+.pricePlus,
+.price {
+  text-align: center;
 }

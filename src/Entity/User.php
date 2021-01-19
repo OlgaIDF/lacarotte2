@@ -67,7 +67,7 @@ class User implements UserInterface
     private $orders;
 
     /**
-     * @ORM\OneToMany(targetEntity=Customer::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Customer::class, mappedBy="user", cascade={"remove"})
      */
     private $customers;
 

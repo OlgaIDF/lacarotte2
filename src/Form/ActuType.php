@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ActuType extends AbstractType
 {
@@ -17,7 +18,7 @@ class ActuType extends AbstractType
     {
         $builder
             ->add('Title', TextType::class )
-            ->add('Content', TextType::class )
+            ->add('Content', TextareaType::class )
             ->add('created_at', DateType::class, array(
                 // отображает его как одно тестовое поле
                 'widget' => 'single_text',

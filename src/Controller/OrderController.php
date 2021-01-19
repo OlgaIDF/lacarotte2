@@ -7,6 +7,7 @@ use App\Entity\Orders;
 use App\Form\OrdersType;
 use App\Entity\OrderDetails;
 use App\Repository\UserRepository;
+use App\Repository\CustomerRepository;
 use App\Repository\ItemMenuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,10 +19,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class OrderController extends AbstractController
 {
   /**
-   * @Route("/users/order", name="order")
+   * @Route("/order", name="order")
    */
   public function index(SessionInterface $session, ItemMenuRepository $itemMenuRepository)
   {
+    if (!$this->getUser()->getCustomers()->getValues()) {
+      return $this->redirectToRoute('add_destinataire');
+  }
     $cart = $session->get('cart', []);
     $cartWithData = [];
     foreach ($cart as $id => $quantity) {
@@ -36,14 +40,14 @@ class OrderController extends AbstractController
       $totalItem = $item['menu']->getPrice() * $item['quantity'];
       $total += $totalItem;
     }
-
+$id=$this->getUser()->getId();
 
   $form = $this->createForm(OrdersType::class, null, [
       'user' => $this->getUser()
   ]);
     return $this->render('order/order.html.twig', [
       'form' => $form->createView(),
-      'items' => $cartWithData,
+            'items' => $cartWithData,
       'total' => $total
 
 
@@ -51,13 +55,15 @@ class OrderController extends AbstractController
   }
 
 /**
-     * @Route("/users/order/recap", name="order_recap", methods={"POST", "GET"})
+     * @Route("/order/recap", name="order_recap", methods={"POST", "GET"})
      */
     public function addOrder(SessionInterface $session, Request $request, EntityManagerInterface $manager, ItemMenuRepository $itemMenuRepository): Response
 
     {
         
-    
+      if (!$this->getUser()->getCustomers()->getValues()) {
+        return $this->redirectToRoute('add_destinataire');
+    }
   $form = $this->createForm(OrdersType::class, null, [
       'user' => $this->getUser()
   ]);
@@ -67,10 +73,6 @@ class OrderController extends AbstractController
             
             $customer = $form->get('customer')->getData();
             $customer_content = $customer->getFirstName().' '.$customer->getLastName();
-
-            
-            $customer_content .= '</br>'.$customer->getAddress();
-            $customer_content .= '</br>'.$customer->getPostalCode().' '.$customer->getCity();
             $customer_content .= '</br>'.$customer->getPhone();
             // dd($customer_content);
 

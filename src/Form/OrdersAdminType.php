@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,15 +24,19 @@ class OrdersAdminType extends AbstractType
             ->add('created_at', DateTimeType::class, array(
                 // отображает его как одно тестовое поле
                 'widget' => 'single_text',
-                
+                'label' =>'Créé à'
             ))
 
            
             ->add('reference')
-            ->add('customer')
+            ->add('customer', TextType::class,[
+                'label' => 'Destinataire'
+            ])
             ->add('user', EntityType::class, array(
                 'class'=>User::class,
-                'choice_label'=>'last_name'
+                'choice_label'=>'last_name', 
+                'label'=>'Utilisateur'
+               
             ))
             ->add('state', ChoiceType::class, [
                 'choices' => [
@@ -39,9 +44,9 @@ class OrdersAdminType extends AbstractType
                 'Payée' => 1,
                 'Préparation en cours' => 2,
                 
-                ]
+                ],
+             'label'=>'Statut'
             ])
-            
             ->add('save', SubmitType::class, [
                 'label' => 'Valider'
             ]

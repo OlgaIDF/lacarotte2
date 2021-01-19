@@ -1,10 +1,10 @@
 :root {
    font-size: calc(0.6em + 1vw);
  }
+
  body {
    font-family: 'Roboto', sans-serif;
-  height: 100%;
-   font-size: 0.7rem;
+     font-size: 0.7rem;
  }
  header, footer{
     background-color: #233d4d;
@@ -13,7 +13,6 @@
  .logo{
     width: 7rem;
  }
-
 
  h1 {
   font-family: "Montserrat", sans-serif;
@@ -33,7 +32,8 @@ h2 {
    margin-left: -1.5rem;
    text-decoration: none;
    list-style-type: none;
-   margin-bottom: 10rem !important;
+   position: relative;
+  min-height: 70vh;
  }
  .listadmin ul li a {
    color: #233d4d;
@@ -45,7 +45,7 @@ h2 {
  .listadmin .dropdown-divider{
   border-top: 1px solid #233d4d;
  }
- #form-submit, .btn-outline-dark, .profile_btn{
+ .btn{
   background: #f9ab00;
   color: #233d4d;
   font-size: 0.6rem;
@@ -58,12 +58,11 @@ h2 {
   font-size: 0.7rem !important;
 }
 footer {
- 
-
-  font-size: smaller;
-  padding: 2rem;
+margin: 0 auto !important;
+padding: 2rem;
 }
 
 footer a, footer a:hover {
   color: #f9ab00;
+
 }

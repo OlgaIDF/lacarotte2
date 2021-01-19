@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ItemMenuType extends AbstractType
 {
@@ -27,7 +28,7 @@ class ItemMenuType extends AbstractType
             ) 
                 
             )
-            ->add('ingredients', TextType::class)
+            ->add('ingredients', TextareaType::class)
             ->add('price', MoneyType::class)
             ->add('img', FileType::class, [
                 'required' => false,
