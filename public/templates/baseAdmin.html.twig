@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>La carotte</title>
+   <!-- Bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+   <!-- CSS -->
+   <link rel="stylesheet" href="{{ asset('css/styleAdmin.css') }}" />
+   <!-- Font Awesome -->
+   <script src="https://kit.fontawesome.com/e2b423cc67.js" crossorigin="anonymous"></script>
+   <!-- Icon -->
+   <link rel="shortcut icon" type="image/png" sizes="32x32" href="./img/logoonglet.png" />
+   <!-- Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet" />
+   <title>Admin- {% block title %}base {% endblock %}</title>
+   {% block stylesheets %} {% endblock %}
+</head>
+
+<body>
+   <header>
+      {% for label, messages in app.flashes(['success', 'danger']) %} {% for
+      message in messages %}
+      <div class="flash-{{ label }} p-3 fixed-top bg-{{
+          label
+        }} text-white text-center">
+         {{ message }}
+      </div>
+      {% endfor %} {% endfor %}
+      <div class="container-fluid">
+         <div class="row">
+            <div class="col-12 p-3 text-center">
+               <a href="{{ path('home') }}"><img src="{{ asset('img/carrot.png') }}" class="img-fluid logo float-left"
+                     alt="logo" /></a>
+               <h1 class="bienvenue mt-2">
+                  Bienvenue sur l'espace administrateur du site La carotte
+               </h1>
+            </div>
+         </div>
+      </div>
+   </header>
+   <div class="container-fluid">
+      <div class="row">
+         {% block body %}
+         <div class="col-2 bg-light p-3 listadmin">
+            <ul>
+               <li>
+                  <a href="{{ path('admin') }}"><i class="fa fa-home" aria-hidden="true"></i> - Accueil
+                     admin</a>
+               </li>
+               <div class="dropdown-divider"></div>
+               <li>
+                  <a href="{{ path('admin_actus') }}"><i class="fas fa-clipboard-list"></i> - Actus</a>
+               </li>
+               <li>
+                  <a href="{{ path('admin_category') }}"><i class="fas fa-list-ul"></i> - Catégories</a>
+               </li>
+               <li>
+                  <a href="{{ path('admin_menu') }}"><i class="fas fa-utensils"></i> - Menu</a>
+               </li>
+
+              
+               <li>
+                  <a href="{{ path('admin_orders') }}"><i class="fas fa-shopping-cart"></i> - Commandes</a>
+               </li>
+
+               <li>
+                  <a href="{{ path('admin_users') }}"><i class="fas fa-users"></i> - Utilisateurs</a>
+               </li>
+
+               <div class="dropdown-divider"></div>
+               <li>
+                  <a href="{{ path('home') }}"><i class="far fa-times-circle"></i> - Quitter l'espace admin</a>
+               </li>
+               <div class="dropdown-divider"></div>
+               <li>
+                  <a href="{{ path('app_login') }}"><svg width="1em" height="1em" viewbox="0 0 16 16"
+                        class="bi bi-people-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                           d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                     </svg>
+                     - Changer utilisateur</a>
+               </li>
+               <li>
+                  <a href="{{ path('app_logout') }}"><i class="fas fa-user-times"></i> - D&eacute;connexion</a>
+               </li>
+            </ul>
+         </div>
+         {% endblock %}
+      </div>
+   </div>
+
+   {{ include('footer.html.twig')}}
+   {% block javascripts %}{% endblock %}
+   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

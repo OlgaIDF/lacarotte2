@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %} {% block title %}{% endblock %} {% block body %}
+
+<!-- Header -->
+{{ include("navbar.html.twig") }}
+<section class="section">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="offset-sm-2 col-sm-8">
+          <div class="titleText text-center mt-5">
+            <p>Cette page est actuellement en construction et sera disponible en ligne prochainement. </p>
+            <img id="logo" src="{{ asset('img/warning.png') }}" width="100" class="img-fluid" alt="warning"/>
+          </div>
+        </div>
+      </div>
+</div>
+</section>
+{% endblock %}

@@ -331,3 +331,9 @@ footer a:hover {
 .price {
   text-align: center;
 }
+.panier_emporter{
+  font-size: 0.9rem;
+  color: #233d4d;
+  margin-top: -2rem;
+}
+

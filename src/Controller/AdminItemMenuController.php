@@ -98,6 +98,8 @@ class AdminItemMenuController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            if($imgMenu != null){
+
             if ($oldNomImgMenu != null) {
                 unlink($oldCheminImgMenu);
             }
@@ -120,7 +122,9 @@ class AdminItemMenuController extends AbstractController
             }
 
             $menu->setImg($newNomImgMenu); // nom pour la base de données
-
+        } else{
+            $menu->setImg($oldNomImgMenu);
+        }
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($menu);
             $manager->flush();

@@ -1,48 +1,32 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}commande{% endblock %}
+{% block title %}actus{% endblock %}
 
 {% block body %}
 
 {{ parent() }}
 <div class="col-10 p-5">
-    <h2 class="py-3">Les commandes</h2>
+    <h2 class="py-3">Les actus</h2>
     <table class="table table-striped  table-hover table-responsive-sm">
         <thead>
             <tr>
-                <th scope="col">Reference</th>
-                <th scope="col">Passée le</th>
-                <th scope="col">Par</th>
-                <th scope="col">Total</th>
-                <th scope="col">Statut</th>
+                <th scope="col">N°</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Contenu</th>
+                <th scope="col">Date</th>
+
                 <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for order in orders %}
+            {% for actu in actus %}
             <tr>
-                <td>{{order.reference}}</td>
-                <td>{{  order.createdat|date('Y-m-d H:i:s')  }}</td>
-                <td>{{order.user.lastName }} {{order.user.firstName }}</td>
-                <td>{{order.total}}</td>
-
+                <td>{{ loop.index }}</td>
+                <td>{{ actu.title }}</td>
+                <td>{{ actu.content }}</td>
+                <td>{{ actu.createdat|date("d M Y") }}</td>
                 <td>
-                    {% if order.state == 0 %}
-                    Non payée
-                    {% elseif order.state == 1 %}
-                    Payée
-                    {% elseif order.state == 2 %}
-                    Préparation en cours
-                    {% elseif order.state == 3 %}
-                    Prêt pour la collecte 
-                    {% elseif order.state == 4 %}
-                    Récupéré  
-                    {% endif %}
-
-                </td>
-
-                <td>
-                    <a href="{{ path('order_update', {'id':order.id}) }}">
+                    <a href="{{ path('actu_update', {'id':actu.id}) }}">
                         <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-pencil-square"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -52,7 +36,7 @@
                         </svg>
                     </a>
                     |
-                    <a href="{{ path('order_delete', {'id':order.id}) }}">
+                    <a href="{{ path('actu_delete', {'id':actu.id}) }}">
                         <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-trash" fill="currentColor"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -66,7 +50,7 @@
             {% endfor %}
         </tbody>
     </table>
-
+    <a href="{{ path('actu_create') }}" class="btn float-right">Ajouter</a>
 </div>
 
 {% endblock %}

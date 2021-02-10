@@ -8,7 +8,7 @@
 <div class="col-10 p-3 shadow">
     <h2 class="p-3 ml-5">Les coordonnées du destinataire</h2>
 
-    <div class="container profile mx-5 ">
+    <div class="container ">
 
 
 
@@ -17,18 +17,18 @@
             {{ message }}
         </div>
         {% endfor %}
-        
+        <hr>
         {% if app.user.customers|length  < 1 %}
         <p>Les coordonnées du destinataire non encore enregistrées</p>
         {% else %}
 
         <!-- // display destinataire -->
         {% for customer in customers %}
-        <div class="row ">
+        <div class="row  mx-3">
             <div class="col-md-8">
 
 
-                <p>{{ loop.index }}. {{customer.firstName}} {{customer.lastName}} </p>
+                <h6>{{ loop.index }}. {{customer.firstName|title}} {{customer.lastName|title}} </h6>
 
                 <p>&#8470; téléphone: {{customer.phone}}</p>
 
@@ -36,10 +36,10 @@
 
             <div class="actions col-md-4">
                 <a href="{{path('edit_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-edit p-1  text-dark"></i>
+                    <i class="fa fa-edit p-1 ml-2 btn btn-outline-warning text-dark"></i>
                 </a>
                 <a href="{{path('delete_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-trash p-1 ml-2 text-dark"></i>
+                    <i class="fa fa-trash p-1 ml-2 text-dark btn btn-outline-warning text-dark"></i>
                 </a>
             </div>
         </div>

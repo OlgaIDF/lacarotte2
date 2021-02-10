@@ -1,0 +1,71 @@
+
+
+{% extends 'baseUsers.html.twig' %}
+
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+{{ parent() }}
+
+<div class="col-10 p-3 shadow">
+    <h2 class="p-3 ml-5">Commande &#x2116;  : {{order.reference}} </h2>
+
+    
+
+        <div class="container mx-5">
+            
+                    <p>Date de commande: {{order.createdAt|date('Y-m-d H:i') }}</p>
+                    {# <h4>{{order.delivery|raw}}</h4> #}
+                    <p>Destinataire: {{order.customer|raw}}</p>
+                    <p> Statut de la commande :
+                     {% if order.state == 1 %}
+                     <span class="badge badge-primary p-1">Payée</span>
+                 {% elseif order.state == 2 %}
+                     <span class="badge badge-warning p-1">Préparation en cours</span>          
+                 {% elseif order.state == 3 %}
+                     <span class="badge badge-success p-1">Prêt pour la collecte</span>
+                     {% elseif order.state == 4 %}
+                     <span class="badge badge-secondary p-1">Récupéré</span>   
+                 {% endif %}
+                    </p>
+                    
+                
+                  <table class="table table-responsive">
+                     <thead class="text-center">
+                         <tr>
+                             <th>N</th>
+                             <th>Menu</th>
+                             <th>Prix</th>
+                             <th>Quantité</th>
+                             <th></th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                        {% for item in order.orderDetails %}
+                        <tr>
+                            <td>{{ loop.index }}.</td>
+                            <td>{{ item.menu }}</td>
+                            <td>{{ item.price }}&euro;</td>
+                            <td class="text-center">{{ item.quantity }}</td>
+                            <td> {{ item.price * item.quantity }}&euro;</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-right"><strong>Total : </strong></td>
+                            <td>{{ order.total }}&euro;</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+           
+
+        </div>
+        </div>
+
+
+  
+
+{% endblock %}
+

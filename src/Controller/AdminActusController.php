@@ -104,10 +104,10 @@ class AdminActusController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            if($imgActu != null){
             if ($oldNomImgactu != null) {
                 unlink($oldCheminImgactu);
             }
-
 
             $nomImgActu
                 = md5(uniqid()); // nom unique
@@ -131,8 +131,13 @@ class AdminActusController extends AbstractController
             }
 
             $actu->setImg($newNomImgActu); // nom pour la base de données
+} else{
+    $actu->setImg($oldNomImgactu);
+}
+           
 
-            $manager = $this->getDoctrine()->getManager();
+
+$manager = $this->getDoctrine()->getManager();
             $manager->persist($actu);
             $manager->flush();
             $this->addFlash(

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\EditProfileType;
 use App\Repository\UserRepository;
+use App\Repository\OrdersRepository;
 use App\Repository\CommandesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -92,6 +93,33 @@ class UsersController extends AbstractController
         return $this->redirectToRoute('home');
     }
 
+/**
+     * @Route("/users/orders", name="users_commandes")
+     */
+    public function showOrders(OrdersRepository $ordersRepository): Response
+    {
+        $orders = $ordersRepository->findBySuccessOrders($this->getUser());
+        // $orderDetails = [];
+     
+        return $this->render('users/orders.html.twig', [
+            'orders' => $orders
+        ]);
+    }
+     /**
+     * @Route("/users/orders/{reference}", name="users_commandes_details")
+     */
+    public function details($reference, OrdersRepository $ordersRepository): Response
+    {
+        $order = $ordersRepository->findOneByReference($reference);
+        if (!$order || $order->getUser() != $this->getUser() ) {
+            return $this->redirectToRoute('users_commandes');
+        }
+
+        return $this->render('users/orders_details.html.twig', [
+            'reference' => $reference,
+            'order' => $order
+        ]);
+    }
 
 
 

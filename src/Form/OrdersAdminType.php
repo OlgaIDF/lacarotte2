@@ -43,6 +43,8 @@ class OrdersAdminType extends AbstractType
                     'Non payée' => 0,
                 'Payée' => 1,
                 'Préparation en cours' => 2,
+                'Prêt pour la collecte'=> 3,
+                'Récupéré'=> 4
                 
                 ],
              'label'=>'Statut'

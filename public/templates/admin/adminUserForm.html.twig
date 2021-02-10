@@ -1,0 +1,23 @@
+{% extends 'baseAdmin.html.twig' %} 
+{% block title %}user - form{% endblock
+title %} {% block body %}
+
+{{ parent() }}
+
+<div class="col-10 p-5">
+  <h2 class="py-3">Formulaire utilisateur</h2>
+  {{ form_start(formulaireUser) }}
+
+  {{ form_row(formulaireUser.last_name, {'label': 'Nom', 'attr':{'placeholder': 'Nom d\'utilisateur'}}) }}
+  {{ form_row(formulaireUser.first_name, {'label': 'Prenom', 'attr':{'placeholder': 'Prenom d\'utilisateur' }}) }}
+  {{ form_row(formulaireUser.email, {'label': 'E-mail', 'attr':{'placeholder': 'Adresse e-mail' }}) }}
+  {{ form_row(formulaireUser.phone, {'label': 'Téléphone ', 'attr':{'placeholder': 'Numéro de téléphone' }}) }}
+  {{ form_row(formulaireUser.roles) }}
+  {{ form_row(formulaireUser.plainPassword, {'label': 'Mot de passe', 'attr':{'placeholder': 'Mot de passe'  }}) }}
+  {{ form_row(formulaireUser.agreeTerms, {'label': "J'accepte la politique de confidentialité et conditions general de vente"} ) }}
+
+  <button type="submit" id="form-submit" class="btn float-right">Valider</button>
+  {{ form_end(formulaireUser) }}
+</div>
+
+{% endblock %}
