@@ -55,8 +55,8 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                         ]),
                     ],
-                    'first_options' => ['label' => 'Mot de passe'],
-                    'second_options' => ['label' => 'Confirmation du mot de passe'],
+                    'first_options' => ['label' => 'Mot de passe '],
+                    'second_options' => ['label' => ' Confirmation du mot de passe '],
                     'invalid_message' => "Vous n'avez pas tapé le même mot de passe"
 
                  ])
