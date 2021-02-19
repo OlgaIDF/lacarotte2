@@ -1,4 +1,9 @@
+{% extends 'base.html.twig' %} {% block title %}{% endblock %} {% block body %}
 
+<!-- Header -->
+{{ include("navbar.html.twig") }}
+<section class="section">
+  <div class="container-fluid">
     <div class="row">
       <div class="offset-sm-2 col-sm-8">
         <div class="titleText text-center">
@@ -6,8 +11,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-10 offset-1 pl-5">
+    <div class="row ">
+      <div class="col-10 offset-1 pl-5 reglementation">
         <p>
           Les informations personnelles ne sont pas collectées à votre insu mais
           volontairement communiquées par vous. Les informations personnelles ne

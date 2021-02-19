@@ -18,7 +18,16 @@ class ActusRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Actus::class);
     }
-
+    public function findActusById() 
+    {
+        return $this->createQueryBuilder('e') /* 's' est un alias */
+            ->andWhere('e.id > :val') /* on cherhce un id supérieur à une valeur */
+            ->setParameter('val', '0') /* on donne la valeur */
+            ->orderBy('e.id', 'DESC') /* tri en ordre décroissant */
+            ->getQuery() /* requête */
+            ->getResult() /* résultats */
+        ;
+    }
     // /**
     //  * @return Actus[] Returns an array of Actus objects
     //  */

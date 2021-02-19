@@ -19,7 +19,7 @@ class AdminActusController extends AbstractController
      */
     public function index(ActusRepository $actusRepository)
     {
-        $actus = $actusRepository->findAll();
+        $actus = $actusRepository->findActusById();
 
         return $this->render('admin/adminActus.html.twig', [
             'actus' => $actus,

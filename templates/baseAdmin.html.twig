@@ -94,10 +94,20 @@
    </div>
 
    {{ include('footer.html.twig')}}
-   {% block javascripts %}{% endblock %}
+   {% block javascripts %}
+  
+   {% endblock %}
    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
       crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+                $('.custom-file-input').on('change', function(event) {
+                    var inputFile = event.currentTarget;
+                    $(inputFile).parent()
+                        .find('.custom-file-label')
+                        .html(inputFile.files[0].name);
+                });
+            </script>
 </body>
 
 </html>

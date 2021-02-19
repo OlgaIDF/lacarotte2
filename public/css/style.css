@@ -20,7 +20,7 @@ header {
   font-size: 0.7rem;
 }
 .nav-profile {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   color: #f9ab00;
   text-transform: uppercase;
 }
@@ -339,4 +339,7 @@ footer a:hover {
 .champs{
 font-size: 0.7rem;
 color: rgb(121, 113, 113);
+}
+.reglementation{
+  font-size: 0.7rem;
 }

@@ -21,13 +21,7 @@ class OrdersAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('created_at', DateTimeType::class, array(
-                // отображает его как одно тестовое поле
-                'widget' => 'single_text',
-                'label' =>'Créé à'
-            ))
-
-           
+          
             ->add('reference')
             ->add('customer', TextType::class,[
                 'label' => 'Destinataire'

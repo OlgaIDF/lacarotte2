@@ -35,6 +35,7 @@ class CartController extends AbstractController
       'total' => $total
     ]);
   }
+  
     /**
    * @Route("/cart/add/{id}", name="cart_add")
    */
@@ -49,6 +50,7 @@ class CartController extends AbstractController
     $session->set('cart', $cart);
     return $this->redirectToRoute("cart_index");
   }
+
   /**
    * @Route("/cart/delete/{id}", name="cart_delete")
    */
@@ -61,6 +63,7 @@ class CartController extends AbstractController
     $session->set('cart', $cart);
     return $this->redirectToRoute("cart_index");
   }
+
   /**
      * @Route("/cart/deleteOne/{id}", name="delete_one")
      */

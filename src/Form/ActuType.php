@@ -19,11 +19,7 @@ class ActuType extends AbstractType
         $builder
             ->add('Title', TextType::class )
             ->add('Content', TextareaType::class )
-            ->add('created_at', DateType::class, array(
-                // отображает его как одно тестовое поле
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
-            ))
+
             ->add('img', FileType::class, [
                 'required' => false,
                 'mapped' => false,
