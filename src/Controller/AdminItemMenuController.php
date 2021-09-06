@@ -28,7 +28,7 @@ class AdminItemMenuController extends AbstractController
     /**
      * @Route("/admin/menu/create", name="menu_create")
      */
-    public function createMenu(Request $request)
+    public function createMenu(Request $request)//creation se menu
     {
         $menu = new ItemMenu();
         $form = $this->createForm(ItemMenuType::class, $menu);
@@ -41,8 +41,8 @@ class AdminItemMenuController extends AbstractController
             if ($form->isValid()) {
 
                 $nomImgMenu = md5(uniqid()); // nom unique
-                $extensionImgMenu = $imgMenu->guessExtension(); // récupérer l'extension du picto
-                $newNomImgMenu = $nomImgMenu . '.' . $extensionImgMenu; // recomposer un nom du picto
+                $extensionImgMenu = $imgMenu->guessExtension(); // récupérer l'extension du image
+                $newNomImgMenu = $nomImgMenu . '.' . $extensionImgMenu; // recomposer un nom du image
 
                 try { // on tente d'importer l'image
 
@@ -84,7 +84,7 @@ class AdminItemMenuController extends AbstractController
     /**
      * @Route("/admin/menu/update-{id}", name="menu_update")
      */
-    public function updateMenu(ItemMenuRepository $itemMenuRepository, $id, Request $request)
+    public function updateMenu(ItemMenuRepository $itemMenuRepository, $id, Request $request)//modifier le menu
     {
         $menu = $itemMenuRepository->find($id);
 
@@ -98,33 +98,33 @@ class AdminItemMenuController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if($imgMenu != null){
+            if ($imgMenu != null) {
 
-            if ($oldNomImgMenu != null) {
-                unlink($oldCheminImgMenu);
+                if ($oldNomImgMenu != null) {
+                    unlink($oldCheminImgMenu);
+                }
+
+
+                $nomImgMenu = md5(uniqid()); // nom unique
+                $extensionImgMenu = $imgMenu->guessExtension(); // récupérer l'extension du image
+                $newNomImgMenu = $nomImgMenu . '.' . $extensionImgMenu; // recomposer un nom du image
+
+                try { // on tente d'importer le image                                      
+                    $imgMenu->move(
+                        $this->getParameter('dossier_photos_menu'),
+                        $newNomImgMenu
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'danger',
+                        'Une erreur est survenue lors de l\'importation d\'image'
+                    );
+                }
+
+                $menu->setImg($newNomImgMenu); // nom pour la base de données
+            } else {
+                $menu->setImg($oldNomImgMenu);
             }
-
-
-            $nomImgMenu = md5(uniqid()); // nom unique
-            $extensionImgMenu = $imgMenu->guessExtension(); // récupérer l'extension du picto
-            $newNomImgMenu = $nomImgMenu . '.' . $extensionImgMenu; // recomposer un nom du picto
-
-            try { // on tente d'importer le picto                                      
-                $imgMenu->move(
-                    $this->getParameter('dossier_photos_menu'),
-                    $newNomImgMenu
-                );
-            } catch (FileException $e) {
-                $this->addFlash(
-                    'danger',
-                    'Une erreur est survenue lors de l\'importation d\'image'
-                );
-            }
-
-            $menu->setImg($newNomImgMenu); // nom pour la base de données
-        } else{
-            $menu->setImg($oldNomImgMenu);
-        }
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($menu);
             $manager->flush();
@@ -143,7 +143,7 @@ class AdminItemMenuController extends AbstractController
     /**
      * @Route("/admin/menu/delete-{id}", name="menu_delete")
      */
-    public function deleteMenu(ItemMenuRepository $itemMenuRepository, $id)
+    public function deleteMenu(ItemMenuRepository $itemMenuRepository, $id)//sipprimer le menu
     {
         $menu = $itemMenuRepository->find($id);
 
@@ -156,7 +156,7 @@ class AdminItemMenuController extends AbstractController
             unlink($cheminImgMenu);
         }
 
-        
+
 
         $manager = $this->getDoctrine()->getManager();
         $manager->remove($menu);

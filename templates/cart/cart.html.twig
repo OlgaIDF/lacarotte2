@@ -1,97 +1,111 @@
-{% extends 'base.html.twig' %} {% block title %} -panier {% endblock %} {% block body %}
-<section class="section">
-  <div class="container-fluid">
-    {{ include("navbar.html.twig") }}
-  </div>
-  <div class="row">
-    <div class="col-10 offset-1 text-center pt-5">
-      <h2>Votre panier </h2>
-      <p class="panier_emporter">(à emporter uniquement)</p>
-    
-    </div>
-  </div>
+{% extends 'base.html.twig' %}
+{% block title %}
+	-panier
+{% endblock %}
+{% block body %}
+	<section class="section">
+		<div class="container-fluid">
+			{{ include("navbar.html.twig") }}
+		</div>
+		<div class="row">
+			<div class="col-10 offset-1 text-center pt-5">
+				<h2>Votre panier
+				</h2>
+				<p class="panier_emporter">(à emporter uniquement)</p>
 
-  {% if items | length > 0 %}
+			</div>
+		</div>
 
-  <div class="row">
-    <div class="col-5 offset-1 mb-3 continuer">
-      <a href="{{ path('home') }}#menus"><i class="fa fa-arrow-left" aria-hidden="true"></i> Continuer mes
-        achats</a>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-10 offset-1">
-      <table class="table table-responsive">
-        <thead class="text-center">
-          <tr>
-            <th scope="col">N</th>
-            <th scope="col">Photo</th>
-            <th scope="col">Menu</th>
-            <th scope="col">Composants</th>
-            <th scope="col">Prix</th>
-            <th scope="col" colspan="3">Quantité</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in items %}
+		{% if items | length > 0 %}
 
-          <tr>
-            <th scope="row">{{ loop.index }}.</th>
+			<div class="row">
+				<div class="col-5 offset-1 mb-3 continuer">
+					<a href="{{ path('home') }}#menus">
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+						Continuer mes
+						        achats</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-10 offset-1">
+					<table class="table table-responsive">
+						<thead class="text-center">
+							<tr>
+								<th scope="col">N</th>
+								<th scope="col">Photo</th>
+								<th scope="col">Menu</th>
+								<th scope="col">Composants</th>
+								<th scope="col">Prix</th>
+								<th scope="col" colspan="3">Quantité</th>
+								<th scope="col"></th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for item in items %}
 
-            <td>
-              <img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier"
-                alt="{{ item.menu.name }}" />
-            </td>
-            <td>{{ item.menu.name }}</td>
-            <td>{{ item.menu.ingredients }}</td>
-            <td>{{ item.menu.price }}&euro;</td>
-            <td class="priceMinus">
-              <a href="{{ path('delete_one', { id: item.menu.id }) }}"><i
-                  class="fa fa-minus p-1 rounded-pill bg-warning text-dark"></i></a>
-            </td>
-            <td class="price">{{ item.quantity }}</td>
-            <td class="pricePlus">
-              <a href="{{ path('cart_add', { id: item.menu.id }) }}"><i
-                  class="fa fa-plus p-1 rounded-pill bg-warning text-dark"></i></a>
-            </td>
-            <td>{{ item.menu.price * item.quantity }}&euro;</td>
-            <td>
-              <a href="{{ path('cart_delete', { id: item.menu.id }) }}"><i
-                  class="fa fa-trash p-1 mr-2 text-dark"></i></a>
-            </td>
-          </tr>
+								<tr>
+									<th scope="row">{{ loop.index }}.</th>
 
-          {% endfor %}
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="8" class="text-right"><strong>Total : </strong></td>
-            <td>{{ total }}&euro;</td>
-            <td></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-11 mb-5">
-      <a href="{{ path('order') }}" id="form-submit" class="btn btn-lg text-center float-right">Commander <i
-          class="fa fa-arrow-right" aria-hidden="true"></i></a>
-    </div>
-  </div>
-  {% else %}
-  <div class="row">
-    <div class="col-12 text-center">
-      <p>Votre panier est vide</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center mb-5">
-      <a href="{{ path('home') }}#menus" type="submit" class="btn btn-lg text-center btn_panier">Commancer mes
-        achats</a>
-    </div>
-  </div>
-</section>
-{% endif %} {% endblock %}
+									<td>
+										<img src="{{ asset('img/menu/' ~ item.menu.img) }}" class="card-img-top" id="img-panier" alt="{{ item.menu.name }}"/>
+									</td>
+									<td>{{ item.menu.name }}</td>
+									<td>{{ item.menu.ingredients }}</td>
+									<td>{{ item.menu.price }}&euro;</td>
+									<td class="priceMinus">
+										<a href="{{ path('delete_one', { id: item.menu.id }) }}">
+											<i class="fa fa-minus p-1 rounded-pill bg-warning text-dark"></i>
+										</a>
+									</td>
+									<td class="price">{{ item.quantity }}</td>
+									<td class="pricePlus">
+										<a href="{{ path('cart_add', { id: item.menu.id }) }}">
+											<i class="fa fa-plus p-1 rounded-pill bg-warning text-dark"></i>
+										</a>
+									</td>
+									<td>{{ item.menu.price * item.quantity }}&euro;</td>
+									<td>
+										<a href="{{ path('cart_delete', { id: item.menu.id }) }}">
+											<i class="fa fa-trash p-1 mr-2 text-dark"></i>
+										</a>
+									</td>
+								</tr>
+
+							{% endfor %}
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="8" class="text-right">
+									<strong>Total :
+									</strong>
+								</td>
+								<td>{{ total }}&euro;</td>
+								<td></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-11 mb-5">
+					<a href="{{ path('order') }}" id="form-submit" class="btn btn-lg text-center float-right">Commander
+						<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		{% else %}
+			<div class="row">
+				<div class="col-12 text-center">
+					<p>Votre panier est vide</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 text-center mb-5">
+					<a href="{{ path('home') }}#menus" type="submit" class="btn btn-lg text-center btn_panier">Commancer mes
+						        achats</a>
+				</div>
+			</div>
+		</section>
+	{% endif %}
+{% endblock %}

@@ -1,63 +1,70 @@
 {% extends 'baseUsers.html.twig' %}
 
-{% block title %}Mes commandes{% endblock %}
-
-{% block body %}
-{{ parent() }}
-
-<div class="col-10 p-3 shadow">
-    <h2 class="p-3 ml-5">Mes commandes</h2>
-
-    <div class="container-fluid profile mx-5">
-
-
-
-        {% for message in app.flashes('success') %}
-        <div class="flash-notice alert alert-success w-50">
-            {{ message }}
-        </div>
-        {% endfor %}
-       
-        {% if orders|length  < 1 %}
-       
-         <div class="col-12 text-center">
-            <p>Pas encore de commandes </p>
-          </div>
-         {% else %}
-
-         <!-- // display addresses -->
-         <div class="row">
-             {% for order in orders %}
-                     <div class="col-lg-3 col-md-12 border m-2 p-3 myorder">
-
-                         <h4>Ref: {{order.reference}}</h4>
-                         <p>{{order.createdAt|date('Y-m-d H:i') }}</p>
-                         <p>Prix total: {{order.total}} € </p>
-                         {% if order.state == 1 %}
-                             <p class="badge badge-primary p-1">Payée</p>
-                         {% elseif order.state == 2 %}
-                             <p class="badge badge-warning p-1">Préparation en cours</p>          
-                         {% elseif order.state == 3 %}
-                             <p class="badge badge-success  p-1">Prêt pour la collecte</p>
-                             {% elseif order.state == 4 %}
-                             <p class="badge badge-secondary p-1">Récupéré</p>   
-                         {% endif %}
-                         <hr>
-                            <p><a href="{{path('users_commandes_details', {'reference' : order.reference})}}">
-                                <i class="fas fa-plus"></i> Details</a></p>
-                           
-                             
-                         </div>
-             {% endfor %}
-                     </div>
-        
-        {% endif %}
-
-     
-     </div>
-
-
-</div>
-
+{% block title %}Mes commandes
 {% endblock %}
 
+{% block body %}
+	{{ parent() }}
+
+	<div class="col-10 p-3 shadow">
+		<h2 class="p-3 ml-5">Mes commandes</h2>
+
+		<div class="container-fluid profile mx-5">
+
+
+			{% for message in app.flashes('success') %}
+				<div class="flash-notice alert alert-success w-50">
+					{{ message }}
+				</div>
+			{% endfor %}
+
+			{% if orders|length  < 1 %}
+
+				<div class="col-12 text-center">
+					<p>Pas encore de commandes
+					</p>
+				</div>
+			{% else %}
+
+				<!-- // display addresses -->
+				<div class="row">
+					{% for order in orders %}
+						<div class="col-lg-3 col-md-12 border m-2 p-3 myorder">
+
+							<h4>Ref:
+								{{order.reference}}</h4>
+							<p>{{order.createdAt|date('Y-m-d H:i') }}</p>
+							<p>Prix total:
+								{{order.total}}
+								€
+							</p>
+							{% if order.state == 1 %}
+								<p class="badge badge-primary p-1">Payée</p>
+							{% elseif order.state == 2 %}
+								<p class="badge badge-warning p-1">Préparation en cours</p>
+							{% elseif order.state == 3 %}
+								<p class="badge badge-success  p-1">Prêt pour la collecte</p>
+							{% elseif order.state == 4 %}
+								<p class="badge badge-secondary p-1">Récupéré</p>
+							{% endif %}
+							<hr>
+							<p>
+								<a href="{{path('users_commandes_details', {'reference' : order.reference})}}">
+									<i class="fas fa-plus"></i>
+									Details</a>
+							</p>
+
+
+						</div>
+					{% endfor %}
+				</div>
+
+			{% endif %}
+
+
+		</div>
+
+
+	</div>
+
+{% endblock %}

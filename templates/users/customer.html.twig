@@ -1,61 +1,64 @@
 {% extends 'baseUsers.html.twig' %}
 
-{% block title %}Les coordonnées du destinataire{% endblock %}
+{% block title %}Les coordonnées du destinataire
+{% endblock %}
 
 {% block body %}
-{{ parent() }}
+	{{ parent() }}
 
-<div class="col-10 p-3 shadow">
-    <h2 class="p-3 ml-5">Les coordonnées du destinataire</h2>
+	<div class="col-10 p-3 shadow">
+		<h2 class="p-3 ml-5">Les coordonnées du destinataire</h2>
 
-    <div class="container profile mx-5 ">
-
-
-
-        {% for message in app.flashes('success') %}
-        <div class="flash-notice alert alert-success w-50">
-            {{ message }}
-        </div>
-        {% endfor %}
-        
-        {% if app.user.customers|length  < 1 %}
-        <p>Les coordonnées du destinataire non encore enregistrées</p>
-        {% else %}
-
-        <!-- // display destinataire -->
-        {% for customer in customers %}
-        <div class="row ">
-            <div class="col-md-8">
+		<div class="container profile mx-5 ">
 
 
-                <p>{{ loop.index }}. {{customer.firstName}} {{customer.lastName}} </p>
+			{% for message in app.flashes('success') %}
+				<div class="flash-notice alert alert-success w-50">
+					{{ message }}
+				</div>
+			{% endfor %}
 
-                <p>&#8470; téléphone: {{customer.phone}}</p>
+			{% if app.user.customers|length  < 1 %}
+				<p>Les coordonnées du destinataire non encore enregistrées</p>
+			{% else %}
 
-            </div>
-
-            <div class="actions col-md-4">
-                <a href="{{path('edit_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-edit p-1  text-dark"></i>
-                </a>
-                <a href="{{path('delete_destinataire', {'id' : customer.id})}}">
-                    <i class="fa fa-trash p-1 ml-2 text-dark"></i>
-                </a>
-            </div>
-        </div>
-        {% endfor %}
-        {% endif %}
-
-        <a href="{{path('add_destinataire')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Ajouter
-            un destinataire </a>
+				<!-- // display destinataire -->
+				{% for customer in customers %}
+					<div class="row ">
+						<div class="col-md-8">
 
 
-    </div>
+							<p>{{ loop.index }}.
+								{{customer.firstName}}
+								{{customer.lastName}}
+							</p>
+
+							<p>&#8470; téléphone:
+								{{customer.phone}}</p>
+
+						</div>
+
+						<div class="actions col-md-4">
+							<a href="{{path('edit_destinataire', {'id' : customer.id})}}">
+								<i class="fa fa-edit p-1  text-dark"></i>
+							</a>
+							<a href="{{path('delete_destinataire', {'id' : customer.id})}}">
+								<i class="fa fa-trash p-1 ml-2 text-dark"></i>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+
+			<a href="{{path('add_destinataire')}}" class="btn btn-lg text-center mt-3 ml-3 float-right profile_btn">Ajouter
+				            un destinataire
+			</a>
 
 
-</div>
+		</div>
 
 
+	</div>
 
 
 {% endblock %}

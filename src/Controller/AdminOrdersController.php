@@ -28,7 +28,7 @@ class AdminOrdersController extends AbstractController
     /**
      * @Route("/admin/orders/update-{id}", name="order_update")
      */
-    public function updateOrder(OrdersRepository $ordersRepository, $id, Request $request)
+    public function updateOrder(OrdersRepository $ordersRepository, $id, Request $request)//modifier l'order
     {
         $order = $ordersRepository->find($id);
 
@@ -58,7 +58,7 @@ class AdminOrdersController extends AbstractController
     /**
      * @Route("/admin/orders/delete-{id}", name="order_delete")
      */
-    public function deleteOrder(OrdersRepository $ordersRepository, $id)
+    public function deleteOrder(OrdersRepository $ordersRepository, $id)//supprimer l'order
     {
         $order = $ordersRepository->find($id);
 

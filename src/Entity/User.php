@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="L'adresse mail existe déjà")
+ * 
  */
 class User implements UserInterface
 {
@@ -25,7 +26,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(
+     *     message = "E-mail '{{ value }}' n'est pas un e-mail valide."
+     * )
      */
+    
     private $email;
 
     /**
@@ -43,11 +48,21 @@ class User implements UserInterface
    
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre prenom ne peut pas contenir de numéro"
+     *)
      */
     private $first_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Votre nom ne peut pas contenir de numéro"
+     *)
      */
     private $last_name;
 

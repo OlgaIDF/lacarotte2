@@ -1,15 +1,16 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}categorie - form{% endblock title %}
+{% block title %}categorie - form
+{% endblock title %}
 
 {% block body %}
 
-    {{ parent() }}
+	{{ parent() }}
 
-    <div class="col-10 p-3">
-        <h2 class="py-3">Formulaire de catégorie</h2>
-        {{ form_start(formulaireCategory) }}
-        {{ form_end(formulaireCategory) }}
-    </div>
+	<div class="col-10 p-3">
+		<h2 class="py-3">Formulaire de catégorie</h2>
+		{{ form_start(formulaireCategory) }}
+		{{ form_end(formulaireCategory) }}
+	</div>
 
 {% endblock %}

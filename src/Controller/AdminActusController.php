@@ -44,10 +44,10 @@ class AdminActusController extends AbstractController
                 $nomImgActu
                     = md5(uniqid()); // nom unique
                 $extensionImgActu
-                    = $imgActu->guessExtension(); // récupérer l'extension du picto
+                    = $imgActu->guessExtension(); // récupérer l'extension du image
                 $newNomImgActu
                     = $nomImgActu
-                    . '.' . $extensionImgActu; // recomposer un nom du picto
+                    . '.' . $extensionImgActu; // recomposer un nom du image
 
                 try { // on tente d'importer l'image
 
@@ -104,40 +104,40 @@ class AdminActusController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if($imgActu != null){
-            if ($oldNomImgactu != null) {
-                unlink($oldCheminImgactu);
+            if ($imgActu != null) {
+                if ($oldNomImgactu != null) {
+                    unlink($oldCheminImgactu);
+                }
+
+                $nomImgActu
+                    = md5(uniqid()); // nom unique
+                $extensionImgActu
+                    = $imgActu->guessExtension(); // récupérer l'extension du image
+                $newNomImgActu
+                    = $nomImgActu
+                    . '.' . $extensionImgActu; // recomposer un nom du image
+
+                try { // on tente d'importer le image                                      
+                    $imgActu->move(
+                        $this->getParameter('dossier_photos_actus'),
+                        $newNomImgActu
+
+                    );
+                } catch (FileException $e) {
+                    $this->addFlash(
+                        'danger',
+                        'Une erreur est survenue lors de l\'importation d\'image'
+                    );
+                }
+
+                $actu->setImg($newNomImgActu); // nom pour la base de données
+            } else {
+                $actu->setImg($oldNomImgactu);
             }
 
-            $nomImgActu
-                = md5(uniqid()); // nom unique
-            $extensionImgActu
-                = $imgActu->guessExtension(); // récupérer l'extension du picto
-            $newNomImgActu
-                = $nomImgActu
-                . '.' . $extensionImgActu; // recomposer un nom du picto
-
-            try { // on tente d'importer le picto                                      
-                $imgActu->move(
-                    $this->getParameter('dossier_photos_actus'),
-                    $newNomImgActu
-
-                );
-            } catch (FileException $e) {
-                $this->addFlash(
-                    'danger',
-                    'Une erreur est survenue lors de l\'importation d\'image'
-                );
-            }
-
-            $actu->setImg($newNomImgActu); // nom pour la base de données
-} else{
-    $actu->setImg($oldNomImgactu);
-}
-           
 
 
-$manager = $this->getDoctrine()->getManager();
+            $manager = $this->getDoctrine()->getManager();
             $manager->persist($actu);
             $manager->flush();
             $this->addFlash(
@@ -155,7 +155,7 @@ $manager = $this->getDoctrine()->getManager();
     /**
      * @Route("/admin/actus/delete-{id}", name="actu_delete")
      */
-    public function deleteActu(ActusRepository $actusRepository, $id)
+    public function deleteActu(ActusRepository $actusRepository, $id)//suppromer les actus
     {
         $actu = $actusRepository->find($id);
 

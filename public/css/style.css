@@ -22,7 +22,7 @@ header {
 .nav-profile {
   font-size: 0.7rem;
   color: #f9ab00;
-  text-transform: uppercase;
+  
 }
 
 #menuTop.navbar-light .navbar-nav .nav-item .nav-link:hover,
@@ -193,7 +193,7 @@ h3 {
 
 .card-prix {
   margin-bottom: 0;
-  color: #f9ab00;
+  color: #233d4d;
   font-size: 0.7rem;
   font-weight: 600;
 }
@@ -272,7 +272,9 @@ footer a:hover {
 #btn_panier,
 #orders_submit,
 #checkout-button,
-.btn_panier {
+.btn_panier
+
+{
   background: #f9ab00;
   color: #233d4d;
   font-size: 0.6rem;

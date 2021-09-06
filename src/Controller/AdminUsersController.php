@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\UsersAdminType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,45 +24,7 @@ class AdminUsersController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/admin/users/create", name="user_create")
-     */
-    public function createUser(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $user = new User();
-
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted()){
-            if($form->isValid()){
-                $user->setPassword(
-                    $passwordEncoder->encodePassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
-                $manager = $this->getDoctrine()->getManager();
-                $manager->persist($user);
-                $manager->flush();
-                $this->addFlash(
-                    'success',
-                    'Le nouvel utilisateur à bien été ajouté'
-                );
-            }
-            else{
-                $this->addFlash(
-                    'danger',
-                    'Une erreur est survenue'
-                );
-            }
-            return $this->redirectToRoute('admin_users');
-        };
-        return $this->render('admin/adminUserForm.html.twig', [
-            'formulaireUser' => $form->createView()
-        ]);
-    }
-
+    
     /**
      * @Route("/admin/users/update-{id}", name="user_update")
      */
@@ -70,17 +32,12 @@ class AdminUsersController extends AbstractController
     {
         $user = $userRepository->find($id);
 
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(UsersAdminType::class, $user);
         $form->handleRequest($request);
 
         if($form->isSubmitted()){
             if($form->isValid()){
-                $user->setPassword(
-                    $passwordEncoder->encodePassword(
-                        $user,
-                        $form->get('plainPassword')->getData()
-                    )
-                );
+                
                 $manager = $this->getDoctrine()->getManager();
                 $manager->persist($user);
                 $manager->flush();

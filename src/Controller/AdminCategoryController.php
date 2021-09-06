@@ -28,7 +28,7 @@ class AdminCategoryController extends AbstractController
     /**
      * @Route("/admin/categories/create", name="category_create")
      */
-    public function createCategory(Request $request) 
+    public function createCategory(Request $request) //creation de category
     {
         $category = new Category();
         
@@ -66,7 +66,7 @@ class AdminCategoryController extends AbstractController
     public function updateCategory(CategoryRepository $categoryRepository,
         $id,
         Request $request
-    ) // modifier des actus
+    ) // modifier des categories
     {
         $category = $categoryRepository
             ->find($id);
@@ -97,10 +97,7 @@ class AdminCategoryController extends AbstractController
     /**
      * @Route("/admin/categories/delete-{id}", name="category_delete")
      */
-    public function deleteCategory(
-        CategoryRepository $categoryRepository,
-        $id
-    ) {
+    public function deleteCategory(CategoryRepository $categoryRepository, $id) {//supprimer les categories
         $category = $categoryRepository
             ->find($id);
 

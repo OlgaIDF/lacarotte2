@@ -1,90 +1,88 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>La carotte</title>
-   <!-- Bootstrap -->
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-   <!-- CSS -->
-   <link rel="stylesheet" href="{{ asset('css/styleAdmin.css') }}">
-   <!-- Font Awesome -->
-   <script src="https://kit.fontawesome.com/e2b423cc67.js" crossorigin="anonymous"></script>
-   <!-- Icon -->
-   <link rel="shortcut icon" type="image/png" sizes="32x32" href="./img/logoonglet.png">
-   <!-- Fonts -->
-   <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet">
-   <title>Admin- {% block title %}base
-      {% endblock %}
-   </title>
-   {% block stylesheets %}
-   {% endblock %}
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>La carotte</title>
+		<!-- Bootstrap -->
+		<link
+		rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<!-- CSS -->
+		<link
+		rel="stylesheet" href="{{ asset('css/styleAdmin.css') }}">
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/e2b423cc67.js" crossorigin="anonymous"></script>
+		<!-- Icon -->
+		<link
+		rel="shortcut icon" type="image/png" sizes="32x32" href="./img/logoonglet.png">
+		<!-- Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto&display=swap" rel="stylesheet">
+		<title>Admin-
+			{% block title %}base
+			{% endblock %}
+		</title>
+		{% block stylesheets %}{% endblock %}
+	</head>
 
-<body>
-   <header>
-      {% for label, messages in app.flashes(['success', 'danger']) %}
-                {% for message in messages %}
-                    <div class="flash-{{ label }} p-3 fixed-top bg-{{ label }} text-white text-center">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %} 
-            
-      <div class="container-fluid">
-         <div class="row">
+	<body>
+		<header>
+			{% for label, messages in app.flashes(['success', 'danger']) %}
+				{% for message in messages %}
+					<div class="flash-{{ label }} p-3 fixed-top bg-{{ label }} text-white text-center">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
 
-            <div class="col-12 p-3 text-center">
+			<div class="container-fluid">
+				<div class="row">
 
-               <a href="{{ path('home') }}"><img src="{{ asset('img/carrot.png') }}" class="img-fluid logo float-left"
-                     alt="logo"></a>
-               <h1 class="bienvenue mt-2"><p >Bienvenue sur votre profile, {{app.user.lastName}} {{app.user.firstName}} </p></h1>
+					<div class="col-12 p-3 text-center">
 
-
-               </div>
-         </div>
-      </div>
-
-   </header>
-   <div class="container-fluid">
+						<a href="{{ path('home') }}"><img src="{{ asset('img/carrot.png') }}" class="img-fluid logo float-left" alt="logo"></a>
+						<h1 class="bienvenue mt-2">
+							<p>Bienvenue sur votre profile,
+								{{app.user.lastName}}
+								{{app.user.firstName}}
+							</p>
+						</h1>
 
 
-      <div class="row">
-         {% block body %}
-         <div class="col-2 bg-light py-3 listadmin">
-            
-					<ul >
-						<li><a href="{{ path('users') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-person-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm4.854-7.85a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                   </svg> - Données personnelles</a></li>
-                   <li><a href="{{ path('users_destinataire') }}"> <i class="fas fa-hands"></i> - Destinataires</a></li>
-						  <li><a href="{{ path('users_commandes') }}"><i class="fa fa-history" aria-hidden="true"></i> - Commandes</a></li>
-						
-						<li><a href="{{ path('home') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg> - Quitter</a></li>
-						<li><a href="{{ path('app_login') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-							<path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
-						 </svg> - Changer le profil</a></li>
-						<li><a href="{{ path('app_logout') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-person-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm1.146-7.85a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/></svg> - D&eacute;connexion</a></li>
-					</ul>
-         </div>
-         {% endblock %}
+					</div>
+				</div>
+			</div>
 
-      </div>
-
-   </div>
+		</header>
+		<div class="container-fluid">
 
 
+			<div class="row">
+				{% block body %}
+					<div class="col-2 bg-light py-3 listadmin">
 
-   {{ include('footer.html.twig')}}
-   {% block javascripts %}{% endblock %}
-   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-      crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+						<ul>
+							<li><ahref="{{ path('users') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-person-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm4.854-7.85a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L12.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0z"/></svg>- Données personnelles</a></li>
+							<li><ahref="{{ path('users_destinataire') }}"><i class="fas fa-hands"></i>- Destinataires</a></li>
+							<li><ahref="{{ path('users_commandes') }}"><i class="fa fa-history" aria-hidden="true"></i>- Commandes</a></li>
+
+							<li><ahref="{{ path('home') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-x-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>- Quitter</a></li>
+							<li><ahref="{{ path('app_login') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>- Changer le profil</a></li>
+							<li><ahref="{{ path('app_logout') }}"><svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-person-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10zm1.146-7.85a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z"/></svg>- D&eacute;connexion</a></li>
+						</ul>
+					</div>
+				{% endblock %}
+
+			</div>
+
+		</div>
+
+
+		{{ include('footer.html.twig')}}
+		{% block javascripts %}{% endblock %}
+		<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</body>
 
 
 </html>
-  
-		
